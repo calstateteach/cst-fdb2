@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cartridge_basiclti_link xmlns="http://www.imsglobal.org/xsd/imslticc_v1p0"
+    xmlns:blti = "http://www.imsglobal.org/xsd/imsbasiclti_v1p0"
+    xmlns:lticm ="http://www.imsglobal.org/xsd/imslticm_v1p0"
+    xmlns:lticp ="http://www.imsglobal.org/xsd/imslticp_v1p0"
+    xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation = "http://www.imsglobal.org/xsd/imslticc_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticc_v1p0.xsd
+    http://www.imsglobal.org/xsd/imsbasiclti_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0.xsd
+    http://www.imsglobal.org/xsd/imslticm_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd
+    http://www.imsglobal.org/xsd/imslticp_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd">
+    <blti:title>Testworld Dashboard Account Nav</blti:title>
+    <blti:description>Testworld Dashboard Account Nav</blti:description>
+    <blti:icon></blti:icon>
+    <blti:launch_url>https://fdb.calstateteach.net/testworld/fdb/lti</blti:launch_url>
+      <blti:custom>
+        <lticm:property name="canvas_account_id">$Canvas.account.id</lticm:property>
+        <lticm:property name="canvas_course_id">$Canvas.course.id</lticm:property>
+        <lticm:property name="canvas_membership_roles">$Canvas.membership.roles</lticm:property>
+        <lticm:property name="canvas_api_baseUrl">$Canvas.api.baseUrl</lticm:property>
+        <lticm:property name="canvas_account_name">$Canvas.account.name</lticm:property>
+        <lticm:property name="canvas_course_name">$Canvas.course.name</lticm:property>
+        <lticm:property name="person_name_full">$Person.name.full</lticm:property>
+        <lticm:property name="canvas_user_loginid">$Canvas.user.loginId</lticm:property>
+      </blti:custom>
+    <blti:extensions platform="canvas.instructure.com">
+      <lticm:property name="tool_id">CalStateTeach Canvas</lticm:property>
+      <lticm:property name="privacy_level">public</lticm:property>
+      <lticm:property name="domain">fdb.calstateteach.net</lticm:property>
+      <lticm:options name="account_navigation">
+        <lticm:property name="url">https://fdb.calstateteach.net/testworld/fdb/lti</lticm:property>
+        <lticm:property name="text">Testworld Dashboard Account Link</lticm:property>
+        <lticm:property name="enabled">true</lticm:property>
+        <lticm:property name="windowTarget">_blank</lticm:property>
+      </lticm:options>
+    </blti:extensions>
+    <cartridge_bundle identifierref="BLTI001_Bundle"/>
+    <cartridge_icon identifierref="BLTI001_Icon"/>
+</cartridge_basiclti_link>
