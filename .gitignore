@@ -1,0 +1,14 @@
+# 08.08.2017 tps For security reasons, don't archive config file.
+.env
+
+# 05.17.2018 tps We don't care about the configuration files
+config/*
+
+# 01.12.2018 tps We don't care about cached Canvas data
+canvas_cache/*
+
+# 02.01.2018 tps We don't care about the npm error log
+npm-debug.log
+
+# 05.17.2018 tps We don't care about scratch test files
+tests/

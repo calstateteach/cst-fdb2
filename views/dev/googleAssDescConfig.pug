@@ -1,0 +1,25 @@
+doctype html
+html(lang='en')
+  head
+    title CST Dashboard Google Assignment Description Configuration
+    link(rel="stylesheet", href=APP_URL + "LatoLatin/latolatinfonts.css")
+    link(rel="stylesheet", href=APP_URL + "style.css")
+    STYLE.
+      .outline {
+        border:1px solid black;
+        padding:10px;
+      }
+  body
+    p
+      A(HREF="./home") Home
+    H1 CST Dashboard Google Assignment Description Configuration
+    P File: <EM>#{configItem.filePath}</EM>
+    P Last parsed: <EM>#{configItem.timestamp.toLocaleString('en-US')}</EM>
+    H2 File Contents
+    PRE(CLASS="outline")= fileData
+    H2 Rendered HTML
+    DIV(CLASS="outline") !{configItem.value}
+    P
+    FORM(ACTION='googleAssignmentConfig' METHOD='POST')
+      INPUT(TYPE='submit' value='Reload data')
+      INPUT(TYPE='hidden' name='action' value='reload')

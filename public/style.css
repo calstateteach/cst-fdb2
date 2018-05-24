@@ -1,0 +1,198 @@
+body {
+  font-family: LatoLatinWeb, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+A {
+  text-decoration: none;  // Underlines make links with numbers hard to read.
+}
+
+.errMsg {
+  color: Red
+}
+
+.students_table td, .students_table th {
+  font-size: 14px;
+  white-space: nowrap;
+  border: 1px solid #CCC;
+  padding:4px;
+}
+
+.students_table {
+  border-collapse: collapse;
+}
+
+.students_table td {
+  height: 36px;
+}
+
+.scrolling {
+  overflow-x:auto;
+  margin-left:340px;
+}
+
+.stuck_left {
+  position:absolute;
+  left:0px;
+  width:230px;
+  padding:10px;
+  text-align: center;
+  height:45px;
+  background-color: #eff3f4;
+  /* display:table; */
+  white-space: normal;
+}
+
+/*
+th.stuck_left {
+  position:absolute;
+  left:0px;
+  width:222px;
+  padding:10px;
+  text-align: center;
+}
+*/
+
+/*
+th.stuck_left_timestamp {
+  position:absolute;
+  left:231px;
+  width:90px;
+  padding:10px;
+  text-align: center;
+}
+*/
+.stuck_left_timestamp {
+  position:absolute;
+  left:239px;
+  width:100px;
+  padding:10px;
+  text-align: center;
+  height:45px;
+  /* display:table; */
+  white-space: normal;
+}
+
+ /* Trick to get vertical alignment to work when a table cell
+ has an asbsolute position: Wrap content in a DIV that appears
+ to be a table cell.  */
+ .text_align_center {
+  display:table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+/*
+.vertical_text_align {
+  display:table-cell;
+  vertical-align: middle;
+}
+*/
+/* Data table */
+TABLE.data {
+  border-collapse: collapse;
+  font-size: smaller;
+}
+
+TABLE.data TH, TABLE.data TD {
+  padding: 4px;
+  border: 1px solid black;
+}
+
+TABLE.data TD {
+  vertical-align: top;
+}
+
+LABEL {
+  font-weight: bold;
+}
+
+
+/* Bordered form */
+form.modal {
+    border: 3px solid #f1f1f1;
+}
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+}
+
+/* Full-width inputs */
+input[type=text] {
+    width: 100%;
+    padding: 6px 4px;
+    margin: 4px 0 12px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5px auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    /* Position it in the top right corner outside of the modal */
+    /*position: absolute;*/
+    /*right: 25px;*/
+    /* 12.27.2017 tps I don't understand how the absolute positioning is supposed to work at. */
+    float: right;
+    top: 0; 
+    margin-right: 12px;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/* Close button on hover */
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}

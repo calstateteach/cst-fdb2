@@ -1,0 +1,6 @@
+extends facultyDash.pug
+block body
+  H1 CST Dashboard Error
+  if err
+    PRE= err.toString()
+  SMALL=(new Date()).toString()

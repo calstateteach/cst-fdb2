@@ -1,0 +1,44 @@
+doctype html
+html(lang='en')
+  head
+    title CST Dashboard Canvas Cache
+    meta(http-equiv="refresh" content="6")
+    link(rel="stylesheet", href=APP_URL + "LatoLatin/latolatinfonts.css")
+    link(rel="stylesheet", href=APP_URL + "style.css")
+  body
+    p
+      A(HREF="./home") Home
+    H1 CST Dashboard Canvas Cache
+    UL
+      LI This page shows what Canvas data has been cached on disk.
+      LI The page reloads every 6 seconds
+      LI You can refresh the data by <A HREF='primeCanvasCache'>priming the cache</A>.
+    
+    P= status
+    if files.length > 0
+      TABLE.data
+        TR
+          TH
+            A(HREF='canvasCache') Key
+          TH
+            A(HREF='canvasCache?sort=size') Size on disk (KB)
+          TH
+            A(HREF='canvasCache?sort=timestamp') Timestamp
+          TH
+            A(HREF='canvasCache?sort=age') Minutes old
+
+        - var now = new Date()
+        each file in files
+          TR
+            -var cacheKey = file.fileName.substr(0, file.fileName.lastIndexOf('.'))
+            TD
+              A(HREF='canvasCache?key=' + cacheKey)= cacheKey
+            TD(STYLE="text-align:right")= (Math.round(file.size / 1024)).toLocaleString()
+            TD= file.timestamp
+            TD(STYLE="text-align:right")= Math.round((now - file.timestamp) / 1000 / 60)
+    else
+      P The disk cache is empty.  
+    P= 'Files in disk cache: ' + files.length
+    P= 'File size total: ' + (Math.round(fileSizeTotal / 1024)).toLocaleString() + ' KB'
+    HR
+    P(STYLE="font-size: smaller")= now

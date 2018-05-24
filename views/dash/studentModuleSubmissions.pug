@@ -1,0 +1,96 @@
+doctype html
+html(lang='en')
+  head
+    title Faculty Dashboard Work
+    link(rel="stylesheet", href=APP_URL + "LatoLatin/latolatinfonts.css")
+    link(rel="stylesheet", href=APP_URL + "style.css")
+    link(rel="stylesheet", href=APP_URL + "style_dash_scroll.css")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+  body
+    if isDevMode
+      p
+        A(HREF= APP_URL + "dev/home") Home
+        | &nbsp; | &nbsp;
+        A(HREF= APP_URL + "dev/facultyList") Faculty List
+
+    H1
+      A(HREF= APP_URL + "dash/faculty/" + user.id)= 'Faculty Dashboard: ' + user.name
+    each term in userTerms
+      H2= term.name
+      DIV
+        //---------- Fixed table columns
+        DIV(CLASS="fixed_left")
+          TABLE(ClASS="dash_table")
+            THEAD
+              TR
+                TH
+                  DIV Teacher
+                  DIV Candidates
+            TBODY
+              each student in term.students
+                TR
+                  TD(CLASS="student_col")
+                    DIV
+                      //- A(HREF= 'https://calstateteach.instructure.com/courses/'+ term.course_id + '/grades/' + student.id + '#tab-assignments' TARGET="_BLANK")= student.name
+                      A(HREF= CST_CANVAS_BASE_URL + 'courses/'+ term.course_id + '/grades/' + student.id + '#tab-assignments' TARGET="_BLANK")= student.name
+
+        //---------- Scrolling table columns
+        DIV(CLASS="scrolling_right")
+          TABLE(ClASS="dash_table"  ID="term_" + term.code)
+            //- Table head for assignments
+            -var courseModule = courseModules[term.course_id].find( e => e.id === moduleId)
+            -var moduleAssignments = courseModule.items.filter( e => e.type === "Assignment")
+            THEAD
+              TR
+                each assignment in moduleAssignments
+                  TH
+                    A(HREF=assignment.html_url TARGET="_blank")= assignment.title
+
+            TBODY
+              each student in term.students
+                TR
+                  each assignment in moduleAssignments
+                    TD(ID= `sec_${term.course_section_id}_ass_${assignment.content_id}_stu_${student.id}`) ----
+    H3
+      A(HREF= APP_URL + "dash/faculty/" + user.id) Back to overview
+
+    //- Place to log request errors
+    DIV(ID="divStatus" STYLE="margin-top: 50px; color:red")
+    
+    //- Debug stuff
+    //- if isDevMode
+    if false
+      DIV(STYLE="margin-top:100px")
+        TABLE(CLASS='data')
+          TR
+            TH Property
+            TH Value
+          TR
+            TD userRoles
+            TD= userRoles
+          TR
+            TD userTerms
+            TD
+              PRE= JSON.stringify(userTerms, null, 2)
+          //- TR
+          //-   TD userEnrollments
+          //-   TD
+          //-     PRE= JSON.stringify(userEnrollments, null, 2)
+          TR
+            TD user
+            TD
+              PRE= JSON.stringify(user, null, 2)
+          TR
+            TD courseModules
+            TD
+              PRE= JSON.stringify(courseModules, null, 2)
+    DIV(ID=divStatus)
+
+    //- Stash data for browser scripts
+    DIV(ID="userTerms" STYLE="display:none")!=JSON.stringify(userTerms)
+    DIV(ID="courseModules" STYLE="display:none")!=JSON.stringify(courseModules)
+    DIV(ID="facultyUser" STYLE="display:none")!=JSON.stringify(user)
+    DIV(ID="appLocation" STYLE="display:none")=APP_URL
+    DIV(ID="canvasBaseUrl" STYLE="display:none")=CST_CANVAS_BASE_URL
+
+    SCRIPT(SRC=APP_URL + "js/moduleDetail.js")

@@ -1,0 +1,26 @@
+doctype html
+html(lang='en')
+  head
+    title UUID Generator
+    link(rel="stylesheet", href="./../LatoLatin/latolatinfonts.css")
+    link(rel="stylesheet", href="./../style.css")
+    style.
+      .uuid {
+        font-family: monospace;
+        font-size: large;
+      }
+  body
+    P
+      A(HREF="./home") Home
+    h1 UUIDs Version 1 (Timestamp &amp; MAC Address)
+    ul
+      each uuid in uuidv1
+        li(class="uuid")= uuid
+
+    h1 UUIDs Version 4 (Random)
+    ul
+      each uuid in uuidv4
+        li(class="uuid")= uuid
+
+    P
+      button(type="button" onclick="window.location.reload('true');") Refresh

@@ -1,0 +1,26 @@
+doctype html
+html(lang='en')
+  head
+    title Faculty Dashboard
+    link(rel="stylesheet", href=APP_URL + "LatoLatin/latolatinfonts.css")
+    link(rel="stylesheet", href=APP_URL + "style.css")
+
+  body
+    block body
+      if isDevMode
+        p
+          A(HREF="./../../dev/home") Home
+          | &nbsp; | &nbsp;
+          A(HREF="./../../dev/facultyList") Faculty List
+      H1 user
+      PRE= JSON.stringify(user, null, 2)
+      H1 userTerms
+      PRE= JSON.stringify(userTerms, null, 2)
+      H1 courseModules
+      PRE= JSON.stringify(courseModules, null, 2)
+      H1 term
+      PRE= JSON.stringify(term, null, 2)
+      H1 student
+      PRE= JSON.stringify(student, null, 2)
+      H1 module
+      PRE= JSON.stringify(module, null, 2)

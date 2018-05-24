@@ -1,0 +1,24 @@
+doctype html
+html(lang='en')
+ head
+   title CST Dashboard Courses Configuration
+   link(rel="stylesheet", href=APP_URL + "LatoLatin/latolatinfonts.css")
+   link(rel="stylesheet", href=APP_URL + "style.css")
+   STYLE.
+    PRE {
+      border:1px solid black;
+      padding:10px;
+    }
+body
+  p
+    A(HREF="./home") Home
+  H1 CST Dashboard Terms Configuration
+  P File: <EM>#{configItem.filePath}</EM>
+  P Last parsed: <EM>#{configItem.timestamp.toLocaleString('en-US')}</EM>
+  H2 Configuration JSON
+  PRE= JSON.stringify(configItem.value, null, 2)
+  H2 File Contents
+  PRE= fileData
+  FORM(ACTION='termsConfig' METHOD='POST')
+    INPUT(TYPE='submit' value='Reload terms data')
+    INPUT(TYPE='hidden' name='action' value='reload')

@@ -1,0 +1,65 @@
+/* -------------- Scrolling table, rowspans in headers --------------------*/
+  
+.scrolling_right {
+  overflow-x:auto;
+  margin-left:239px;
+  /* margin-left:318px; */
+}
+
+TABLE.dash_table {
+  border-collapse: collapse;
+  table-layout: fixed; 
+}
+
+TABLE.dash_table TD, TABLE.dash_table TH {
+  font-size: 14px;
+  white-space: nowrap;
+  border: 1px solid #CCC;
+  margin: 0px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+TABLE.dash_table TD {
+  height: 36px;
+  text-align: center;
+}
+
+TABLE.dash_table TH {
+  height: 63px;
+}
+
+THEAD.dash_head_half_height TH {  /* Half height rows for head cells with rowspans. */
+  height: 30px;
+}
+
+/* -------------- Fixed column table --------------------*/
+
+.fixed_left {
+  position:absolute;
+}
+
+/* -------------- Student Column --------------------*/
+
+TH.student_col {
+  width:230px;
+  height: 45px;  
+}
+
+TD.student_col {
+  width:230px;
+  height: 36px; 
+  background-color: #eff3f4;
+}
+
+/* -------------- Timestamp Column --------------------*/
+
+TH.timestamp_col {
+  width:82px;
+  height: 45px;   
+}
+
+TH.timestamp_col {
+  width:82px;
+  height: 36px; 
+}

@@ -1,0 +1,26 @@
+doctype html
+HTML(lang="en")
+  HEAD
+    TITLE CST Dashboard Development Login
+    link(rel="stylesheet", href="./LatoLatin/latolatinfonts.css")
+    LINK(REL="stylesheet", href="./style.css")
+  BODY
+    H1 CST Faculty Dashboard
+    H2 Developer Login
+    FORM(ID="loginForm" ACTION="./devlogin" METHOD="POST")
+      TABLE
+        TR
+          TH User name:
+          TD
+            INPUT(TYPE="text" NAME="username" VALUE=defaultName)
+        TR
+          TH Password:
+          TD
+            INPUT(TYPE="password" NAME="usersecret")
+        TR
+          TD
+          TD
+            INPUT(TYPE="submit")
+
+    if err
+      H3(CLASS="errMsg")= err

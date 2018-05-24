@@ -1,0 +1,18 @@
+doctype html
+html(lang='en')
+  head
+    title Simulate LTI Request
+    link(rel="stylesheet", href="./LatoLatin/latolatinfonts.css")
+    link(rel="stylesheet", href="./style.css")
+  body
+    p
+      a(href="./home") Home
+    H1 LTI Post Fields
+    TABLE.data
+      TR
+        TH Key
+        TH Value
+      each val, key in body
+        TR
+          TD= key
+          TD= val

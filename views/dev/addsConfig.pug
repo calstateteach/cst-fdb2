@@ -1,0 +1,34 @@
+doctype html
+html(lang='en')
+  head
+    title CST Dashboard Assignment Adds Configuration
+    link(rel="stylesheet", href=APP_URL + "LatoLatin/latolatinfonts.css")
+    link(rel="stylesheet", href=APP_URL + "style.css")
+    STYLE.
+      PRE {
+        border:1px solid black;
+        padding:10px;
+      }
+  body
+    p
+      A(HREF="./home") Home
+    H1 CST Dashboard Assignment Adds Configuration
+    P File: <EM>#{configItem.filePath}</EM>
+    P Last parsed: <EM>#{configItem.timestamp.toLocaleString('en-US')}</EM>
+    H2 Configuration Data
+    - var dataRows = configItem.value
+    TABLE.data
+      TR
+      - var cols = Object.keys(dataRows[0])
+      each col in cols
+        TH= col
+      each row in dataRows
+        TR
+          each col in cols
+            TD= row[col]
+    P= 'Row count: ' + dataRows.length
+    H2 File Contents
+    PRE= fileData
+    FORM(ACTION='addsConfig' METHOD='POST')
+      INPUT(TYPE='submit' value='Reload data')
+      INPUT(TYPE='hidden' name='action' value='reload')

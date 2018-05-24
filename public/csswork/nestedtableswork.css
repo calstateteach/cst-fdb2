@@ -1,0 +1,82 @@
+    body {
+      font-family: LatoLatinWeb, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    
+    A {
+      text-decoration: none;  /* Underlines make links with numbers hard to read. */
+    }
+    
+/* -------------- Scrolling table, rowspans in headers --------------------*/
+  
+.scrolling_right {
+  overflow-x:auto;
+  margin-left:330px;
+}
+
+.students_table {
+  border-collapse: collapse;
+  table-layout: fixed; 
+}
+
+.students_table td, .students_table th {
+  font-size: 14px;
+  white-space: nowrap;
+  border: 1px solid #CCC;
+  /* padding:4px; */
+  margin: 0px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.students_table td {
+  height: 36px;
+  text-align: center;
+}
+
+.students_table th {
+  height: 63px;
+}
+
+.thead_with_rowspan th {  /* Half height rows for head cells with rowspans. */
+  height: 30px;
+}
+
+/* -------------- Fixed column table --------------------*/
+
+.fixed_left {
+  position:absolute;
+}
+
+/* -------------- Student Column --------------------*/
+
+.student_head {
+  width:230px;
+  height: 45px;  
+}
+
+.student_data {
+  width:230px;
+  height: 36px; 
+  background-color: #eff3f4;
+}
+
+/* -------------- Timestamp Column --------------------*/
+
+.timestamp_head {
+  width:82px;
+  height: 45px;   
+}
+
+.timestamp_data {
+  width:82px;
+  height: 36px; 
+}
+
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+    
+   
+

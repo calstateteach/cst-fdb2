@@ -1,0 +1,230 @@
+doctype html
+html(lang='en')
+  head
+    title Faculty Dashboard Work
+    link(rel="stylesheet", href=APP_URL + "LatoLatin/latolatinfonts.css")
+    link(rel="stylesheet", href=APP_URL + "style.css")
+    link(rel="stylesheet", href=APP_URL + "style_dash_scroll.css")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+  body
+    block body
+      if isDevMode
+        p
+          A(HREF="./../../dev/home") Home
+          | &nbsp; | &nbsp;
+          A(HREF="./../../dev/facultyList") Faculty List
+      
+      //- Figure out which add buttons are enabled.
+      //- If not configuration item found, go with default of just Google enabled.
+      - const buttonConfig = addConfig.find( e => e.email === user.login_id)
+      - const isGoogleEnabled = buttonConfig ? (buttonConfig.enable_Google == 1) : true
+      - const isCritiqueItEnabled = buttonConfig && (buttonConfig.enable_iSupervision == 1)
+
+      H1= 'Faculty Dashboard: ' + user.name
+      each term in userTerms
+        H2= term.name
+        DIV
+          //---------- Fixed table columns
+          DIV(CLASS="fixed_left")
+            TABLE(ClASS="dash_table")
+              THEAD
+                TR
+                  TH
+                    DIV Teacher
+                    DIV Candidates
+                TR
+              TBODY
+                each student in term.students
+                  TR
+                    TD(CLASS="student_col")
+                      DIV
+                        //- A(HREF= 'https://calstateteach.instructure.com/courses/'+ term.course_id + '/grades/' + student.id + '#tab-assignments' TARGET="_BLANK")= student.name
+                        A(HREF= CST_CANVAS_BASE_URL + 'courses/' + term.course_id + '/grades/' + student.id + '#tab-assignments' TARGET="_BLANK")= student.name
+
+          //---------- Scrolling table columns
+          DIV(CLASS="scrolling_right")
+            TABLE(ClASS="dash_table"  ID="term_" + term.code)
+              //- Table head requires 2 rows to accommodate survey module
+              if term.survey_module
+                THEAD(CLASS="dash_head_half_height")
+                  TR
+                    TH(ROWSPAN="2")
+                      DIV Clinical Experience
+                      DIV Hours
+                    each module_index in term.module_indices
+                      //- Draw survey module columns
+                      if (module_index === term.survey_module)
+                        TH(COLSPAN="2")
+                          DIV= courseModules[term.course_id][module_index].name.split(':')[0]
+                      else
+                        TH(ROWSPAN="2")
+                          DIV= courseModules[term.course_id][module_index].name.split(':')[0]
+
+                          //- Display module's submission count
+                          - var submissionCount = courseModules[term.course_id][module_index].items.length
+                          DIV(STYLE="font-weight:normal")= submissionCount + " submissions"
+
+                    TH(ROWSPAN="2")
+                      DIV Term Grade
+
+                    //- Figure out how many columns of iSupervision assignments this table head needs to span
+                    //- -var colSpan = iSupeAssignments[term.code].maxAssignmentCount + 1
+                    -var colSpan = term.maxAssignmentCount + 1
+
+                    TH(ROWSPAN="2" COLSPAN= colSpan)
+                      DIV Observation Assignments                      
+                  
+                  //- 2nd row for the survey columns
+                  TR
+                    //- Iterate through quiz items in the survey module
+                    each item in courseModules[term.course_id][term.survey_module].items
+                      if item.type === "Quiz"
+                        TH
+                          //- -var quizUrl = `https://calstateteach.instructure.com/courses/${term.course_id}/quizzes/${item.content_id}`;
+                          -var quizUrl = `${CST_CANVAS_BASE_URL}courses/${term.course_id}/quizzes/${item.content_id}`;
+                          A(HREF= quizUrl TARGET="_BLANK")= item.title
+
+              //- Table head of one row for terms without survey module
+              else
+                THEAD
+                  TR
+                    TH
+                      DIV Clinical Experience
+                      DIV Hours
+                    each module_index in term.module_indices
+                      TH
+                        DIV= courseModules[term.course_id][module_index].name.split(':')[0]
+
+                        //- Display module's submission count
+                        - var submissionCount = courseModules[term.course_id][module_index].items.length
+                        DIV(STYLE="font-weight:normal")= submissionCount + " submissions"
+                    TH
+                      DIV Term Grade
+
+                    //- Figure out how many columns of iSupervision assignments this table head needs to span
+                    //- -var colSpan = iSupeAssignments[term.code].maxAssignmentCount + 1
+                    -var colSpan = term.maxAssignmentCount + 1
+
+                    TH(COLSPAN= colSpan)
+                      DIV Observation Assignments
+              TBODY
+                each student in term.students
+                  TR
+                    //- Locate CE hours cells by term code and student IDs
+                    - var ceHoursId = `term_${term.code}_stu_${student.id}`;
+                    TD(ID=ceHoursId STYLE='text-align:center') ---<BR/>---
+                    each module_index in term.module_indices
+                      //- Display survey module quiz answers
+                      if (module_index === term.survey_module)
+                        each item in courseModules[term.course_id][term.survey_module].items
+                          if item.type === "Quiz"
+                            - var quizTdId = `crs_${term.course_id}_quz_${item.content_id}_stu_${student.id}`;
+                            TD(ID= quizTdId) ----
+                      
+                      //- Display submission counts
+                      //- To locate a table cell, it's ID contains section, student & module IDs
+                      else
+                        - var moduleId = courseModules[term.course_id][module_index].id
+                        - var divId = `sec_${term.course_section_id}_stu_${student.id}_mod_${moduleId}`; 
+                        TD(ID=divId) ----
+                    
+                    //- Last position goes to term grade module
+                    //- - var gradeModuleId = courseModules[term.course_id][term.term_grade].id
+                    - var gradeModuleId = courseModules[term.course_id][term.grade_module].id
+                    - var gradeDivId = `sec_${term.course_section_id}_stu_${student.id}_mod_${gradeModuleId}`; 
+                    TD
+                      DIV(id=gradeDivId STYLE="text-align:center") ----
+                    
+                    //- Draw iSupervision assignments
+                    -var assOverrides = student.assignment_overrides
+                    each ass in assOverrides
+                      TD
+                        DIV
+                          //- CritiqueIt assignments link to assignment URL.
+                          //- Google assignments link to Speed Grader.
+                          - var iSupeAssignmentUrl = `${CST_CANVAS_BASE_URL}courses/${ass.course_id}/gradebook/speed_grader?assignment_id=${ass.id}#%7B%22student_id%22%3A%22${student.id}%22%7D` 
+                          if ass.submission_types[0] === 'external_tool'
+                            - iSupeAssignmentUrl = ass.html_url
+
+                          //- - var iSupeAssignmentUrl = `https://calstateteach.instructure.com/courses/${ass.course_id}/gradebook/speed_grader?assignment_id=${ass.id}#%7B%22student_id%22%3A%22${student.id}%22%7D` 
+                          //- - var iSupeAssignmentUrl = `${CST_CANVAS_BASE_URL}courses/${ass.course_id}/gradebook/speed_grader?assignment_id=${ass.id}#%7B%22student_id%22%3A%22${student.id}%22%7D` 
+                          A(HREF=iSupeAssignmentUrl TARGET="_BLANK")= ass.name
+                        
+                        //- Build a DIV ID for assignment status
+                        - var iSupeDivId = `sec_${student.iSupe_course_section_id}_stu_${student.id}_ass_${ass.id}`
+                        DIV(ID= iSupeDivId) ----
+
+                    //- Possibly fill out the row with empty columns, so the table columns line up
+                    - var extraColCount = term.maxAssignmentCount - assOverrides.length
+                    - var counter = 0
+                    while counter < extraColCount
+                      TD &nbsp;
+                      - ++counter
+
+                    TD
+                      BUTTON(onclick=`showAddForm(${term.course_id}, "Google",     ${student.id})` disabled= !isGoogleEnabled) Google Observation
+                      | &nbsp; &nbsp;
+                      BUTTON(onclick=`showAddForm(${term.course_id}, "CritiqueIt", ${student.id})` disabled= !isCritiqueItEnabled) iSupervision
+          
+      //- Place to log request errors
+      DIV(ID="divStatus" STYLE="margin-top: 50px; color:red")
+      
+      //- Modal add assignment form
+      DIV(id="addAssDiv", class="modal")
+        FORM(class="modal-content animate" onSubmit="return false;" id="addAssForm")
+          SPAN(onclick="document.getElementById('addAssDiv').style.display='none'"
+            class="close"
+            title="Close Modal") &times;
+          DIV(class="container")
+            LABEL(ID='lblAdd') Add assignment with name:
+            INPUT(type='text'
+              name='assignmentName'
+              id='assignmentName'
+              required)
+            INPUT(type='hidden' id='courseId' name='courseId' value='')
+            INPUT(type='hidden' id='sectionId' name='sectionId' value='')
+            INPUT(type='hidden' id='addType' name='addType' value='')
+            BUTTON(type='submit' id='btnSubmit' onclick="submitAdd()") Submit
+            | &nbsp; &nbsp;
+            BUTTON(type='button' onclick="document.getElementById('addAssDiv').style.display='none'" class="cancelBtn" id='btnCancel') Cancel
+            | &nbsp; &nbsp;
+            SPAN(id="waitMsg" class="errMsg" style="visibility:hidden") Adding new assignment... 
+              IMG(SRC=APP_URL + "spinner_small.gif")
+              
+      //- Debug stuff
+      //- if isDevMode
+      if false
+        DIV(STYLE="margin-top:100px")
+          TABLE(CLASS='data')
+            TR
+              TH Property
+              TH Value
+            TR
+              TD userRoles
+              TD= userRoles
+            TR
+              TD userTerms
+              TD
+                PRE= JSON.stringify(userTerms, null, 2)
+            TR
+              TD user
+              TD
+                PRE= JSON.stringify(user, null, 2)
+            TR
+              TD iSupeCourseId
+              TD= iSupeCourseId
+            TR
+              TD courseModules
+              TD
+                PRE= JSON.stringify(courseModules, null, 2)
+
+      DIV(ID=divStatus)
+
+      //- Stash data for browser scripts
+      DIV(ID="userTerms" STYLE="display:none")!=JSON.stringify(userTerms)
+      DIV(ID="courseModules" STYLE="display:none")!=JSON.stringify(courseModules)
+      DIV(ID="facultyUser" STYLE="display:none")!=JSON.stringify(user)
+      DIV(ID="appLocation" STYLE="display:none")=APP_URL
+      DIV(ID="canvasBaseUrl" STYLE="display:none")=CST_CANVAS_BASE_URL
+
+      SCRIPT(SRC=APP_URL + "js/dash.js")

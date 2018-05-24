@@ -1,0 +1,13 @@
+doctype html
+html(lang='en')
+ head
+   title CST Dashboard Canvas Cache
+   link(rel="stylesheet", href=APP_URL + "LatoLatin/latolatinfonts.css")
+   link(rel="stylesheet", href=APP_URL + "style.css")
+body
+  p
+    A(HREF="./home") Home
+  H1 Prime the Canvas Cache
+  P= status
+  FORM(method="POST" action="primeCanvasCache")
+    BUTTON(type='submit') Prime Canvas cache

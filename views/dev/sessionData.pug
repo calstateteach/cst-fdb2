@@ -1,0 +1,44 @@
+doctype html
+html(lang='en')
+ head
+   title Session Data
+   link(rel="stylesheet", href="./../LatoLatin/latolatinfonts.css")
+   link(rel="stylesheet", href="./../style.css")
+ body
+  P
+    A(HREF="./home") Home
+  h1 Session Data
+  table(cellpadding="0", cellspacing="0", border="0")
+    each val, key in sessionData
+      tr
+        td(style="font-weight: bold;")= key + ":"
+        if Array.isArray(val)
+          td
+            A(HREF='sessionData?key=' + key) Array
+            if query && query.key === key
+              PRE= JSON.stringify(val, null, 2)
+        else if typeof val === 'object'
+          td
+            A(HREF='sessionData?key=' + key) Object
+            if query && query.key === key
+              PRE= JSON.stringify(val, null, 2)
+        else
+          td= val
+
+  h2 Cookie Data
+  table(cellpadding="0", cellspacing="0", border="0")
+    each val, key in sessionData.cookie
+      tr
+        td(style="font-weight: bold;")= key + ":"
+        td= val
+
+  h2 HTTP Request Headers
+  table(cellpadding="0", cellspacing="0", border="0")
+    each val, key in reqHeaders
+      tr
+        td(style="font-weight: bold;")= key + ":"
+        td= val
+
+  P
+    FORM(ID="clearSessionForm" ACTION="./destroySession" METHOD="POST")
+      INPUT(TYPE="submit" VALUE="Clear session")

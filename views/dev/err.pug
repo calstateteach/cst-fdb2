@@ -1,0 +1,13 @@
+doctype html
+HTML(lang="en")
+  HEAD
+    TITLE CST Dashboard Error
+    link(rel="stylesheet", href="./../LatoLatin/latolatinfonts.css")
+    LINK(REL="stylesheet", href="./../style.css")
+  BODY
+    P
+      A(HREF="./home") Home
+    H1 CST Dashboard Error
+    if err
+      PRE= err.toString()
+    SMALL=(new Date()).toString()

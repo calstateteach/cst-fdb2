@@ -1,0 +1,2727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Nested Tables Work</title>
+  <link rel="stylesheet" href="nestedtableswork.css">
+  <link rel="stylesheet" , href="../LatoLatin/latolatinfonts.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <H1>Faculty Dashboard: Dan Demo</H1>
+  <H2>Term 1</H2>
+  <!-- DIV experiment: Fixed Table, no rowspan -->
+  <DIV CLASS="container_div">
+    <DIV CLASS="fixed_left">
+      <TABLE class="students_table">
+        <THEAD>
+          <TR>
+            <TH CLASS="student_head">
+              <DIV>Teacher</DIV>
+              <DIV>Candidates</DIV>
+            </TH>
+            <TH CLASS="timestamp_head">
+              <DIV>Data</DIV>
+              <DIV>Timestamp</DIV>
+            </TH>
+          </TR>
+        </THEAD>
+        <TBODY>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1593#tab-assignments" TARGET="_BLANK">Candidate Anel</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1228#tab-assignments" TARGET="_BLANK">Rachel De Mario</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1230#tab-assignments" TARGET="_BLANK">Joseph Rogers</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1231#tab-assignments" TARGET="_BLANK">Carly Skunda</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+    </DIV>
+
+    <!-- DIV experiment: Scrolling table, no rowsapn -->
+    <DIV CLASS="scrolling_right">
+      <TABLE class="students_table">
+        <THEAD>
+          <TR>
+            <TH>
+              <DIV>Clinical Experience</DIV>
+              <DIV>Hours</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 1</DIV>
+              <DIV STYLE="font-weight:normal">(24 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 2</DIV>
+              <DIV STYLE="font-weight:normal">(5 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 3</DIV>
+              <DIV STYLE="font-weight:normal">(17 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 4</DIV>
+              <DIV STYLE="font-weight:normal">(18 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 5</DIV>
+              <DIV STYLE="font-weight:normal">(18 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 6</DIV>
+              <DIV STYLE="font-weight:normal">(18 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Term Grade</DIV>
+            </TH>
+            <TH COLSPAN="13">Observation Assignments</TH>
+          </TR>
+        </THEAD>
+        <TBODY>
+          <TR>
+            <TD>0 verified
+              <BR/>0 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221593%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1265#%7B%22student_id%22%3A%221593%22%7D" TARGET="_BLANK">Test Observation 2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 789, &quot;cabuechler-1&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>0 verified
+              <BR/>315 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">24/24 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">9/16 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">9/16 reviewed</A>
+            </TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/594" TARGET="_BLANK">rdemario-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/595" TARGET="_BLANK">rdemario-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/596" TARGET="_BLANK">rdemario-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/846" TARGET="_BLANK">rdemario-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/929" TARGET="_BLANK">rdemario-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/982" TARGET="_BLANK">rdemario-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1626#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario Obs. 2/6/18</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1955#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario-Module 9</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2217#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario-Module 10</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 467, &quot;rdemario-7&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>0 verified
+              <BR/>301 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">24/24 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">24/24 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/17 reviewed</A>
+            </TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/609" TARGET="_BLANK">jrogers2-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/610" TARGET="_BLANK">jrogers2-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/611" TARGET="_BLANK">jrogers2-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/848" TARGET="_BLANK">jrogers2-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/926" TARGET="_BLANK">jrogers2-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/984" TARGET="_BLANK">jrogers2-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/1028" TARGET="_BLANK">jrogers2-7</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1481#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Obs. 2/1/18</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1956#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 8</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1957#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 9</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2218#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 10</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 464, &quot;jrogers2-8&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>126 verified
+              <BR/>276 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">21/23 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">9/17 reviewed</A>
+            </TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/606" TARGET="_BLANK">cskunda-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/607" TARGET="_BLANK">cskunda-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/608" TARGET="_BLANK">cskunda-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/850" TARGET="_BLANK">cskunda-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/928" TARGET="_BLANK">cskunda-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/983" TARGET="_BLANK">cskunda-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/1027" TARGET="_BLANK">cskunda-7</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1803#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">cskunda-Obs. 2/14/18</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2219#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">cskunda-Module 10</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 462, &quot;cskunda-8&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+    </DIV>
+  </DIV>
+
+  <H2>Term 1A</H2>
+  <!-- Fixed left -->
+  <DIV CLASS="container_div">
+    <DIV CLASS="fixed_left">
+      <TABLE class="students_table">
+        <THEAD>
+          <TR>
+            <TH CLASS="student_head">
+              <DIV>Teacher</DIV>
+              <DIV>Candidates</DIV>
+            </TH>
+            <TH CLASS="timestamp_head">
+              <DIV>Data</DIV>
+              <DIV>Timestamp</DIV>
+            </TH>
+          </TR>
+        </THEAD>
+        <TBODY>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1593#tab-assignments" TARGET="_BLANK">Candidate Anel</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1228#tab-assignments" TARGET="_BLANK">Rachel De Mario</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1230#tab-assignments" TARGET="_BLANK">Joseph Rogers</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1231#tab-assignments" TARGET="_BLANK">Carly Skunda</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+    </DIV>
+
+    <!-- Scrolling table, no rowsapn -->
+    <DIV CLASS="scrolling_right">
+      <TABLE class="students_table">
+        <THEAD>
+          <TR>
+            <TH>
+              <DIV>Clinical Experience</DIV>
+              <DIV>Hours</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 1</DIV>
+              <DIV STYLE="font-weight:normal">(24 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 2</DIV>
+              <DIV STYLE="font-weight:normal">(5 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 3</DIV>
+              <DIV STYLE="font-weight:normal">(17 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Term Grade</DIV>
+            </TH>
+            <TH COLSPAN="13">Observation Assignments</TH>
+          </TR>
+        </THEAD>
+        <TBODY>
+          <TR>
+            <TD>0 verified
+              <BR/>0 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221593%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1265#%7B%22student_id%22%3A%221593%22%7D" TARGET="_BLANK">Test Observation 2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 789, &quot;cabuechler-1&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>0 verified
+              <BR/>315 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">9/16 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">9/16 reviewed</A>
+            </TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/594" TARGET="_BLANK">rdemario-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/595" TARGET="_BLANK">rdemario-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/596" TARGET="_BLANK">rdemario-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/846" TARGET="_BLANK">rdemario-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/929" TARGET="_BLANK">rdemario-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/982" TARGET="_BLANK">rdemario-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1626#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario Obs. 2/6/18</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1955#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario-Module 9</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2217#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario-Module 10</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 467, &quot;rdemario-7&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>0 verified
+              <BR/>301 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/17 reviewed</A>
+            </TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/609" TARGET="_BLANK">jrogers2-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/610" TARGET="_BLANK">jrogers2-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/611" TARGET="_BLANK">jrogers2-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/848" TARGET="_BLANK">jrogers2-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/926" TARGET="_BLANK">jrogers2-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/984" TARGET="_BLANK">jrogers2-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/1028" TARGET="_BLANK">jrogers2-7</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1481#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Obs. 2/1/18</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1956#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 8</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1957#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 9</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2218#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 10</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 464, &quot;jrogers2-8&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>126 verified
+              <BR/>276 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">9/17 reviewed</A>
+            </TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/606" TARGET="_BLANK">cskunda-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/607" TARGET="_BLANK">cskunda-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/608" TARGET="_BLANK">cskunda-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/850" TARGET="_BLANK">cskunda-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/928" TARGET="_BLANK">cskunda-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/983" TARGET="_BLANK">cskunda-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/1027" TARGET="_BLANK">cskunda-7</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1803#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">cskunda-Obs. 2/14/18</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2219#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">cskunda-Module 10</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 462, &quot;cskunda-8&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+    </DIV>
+  </DIV>
+
+  <!-- Term 1B-->
+  <H2>Term 1B</H2>
+  <DIV CLASS="container_div">
+    <DIV CLASS="fixed_left">
+      <TABLE class="students_table">
+        <THEAD>
+          <TR>
+            <TH CLASS="student_head">
+              <DIV>Teacher</DIV>
+              <DIV>Candidates</DIV>
+            </TH>
+            <TH CLASS="timestamp_head">
+              <DIV>Data</DIV>
+              <DIV>Timestamp</DIV>
+            </TH>
+          </TR>
+        </THEAD>
+        <TBODY>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1593#tab-assignments" TARGET="_BLANK">Candidate Anel</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1228#tab-assignments" TARGET="_BLANK">Rachel De Mario</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1230#tab-assignments" TARGET="_BLANK">Joseph Rogers</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1231#tab-assignments" TARGET="_BLANK">Carly Skunda</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+    </DIV>
+
+    <!-- Term 1B, Scrolling table, no rowspan -->
+    <DIV CLASS="scrolling_right">
+      <TABLE class="students_table">
+        <THEAD>
+          <TR>
+            <TH>
+              <DIV>Clinical Experience</DIV>
+              <DIV>Hours</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 4</DIV>
+              <DIV STYLE="font-weight:normal">(24 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 5</DIV>
+              <DIV STYLE="font-weight:normal">(5 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 6</DIV>
+              <DIV STYLE="font-weight:normal">(17 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Term Grade</DIV>
+            </TH>
+            <TH COLSPAN="13">Observation Assignments</TH>
+          </TR>
+        </THEAD>
+        <TBODY>
+          <TR>
+            <TD>0 verified
+              <BR/>0 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221593%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1265#%7B%22student_id%22%3A%221593%22%7D" TARGET="_BLANK">Test Observation 2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 789, &quot;cabuechler-1&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>0 verified
+              <BR/>315 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">9/16 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">9/16 reviewed</A>
+            </TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/594" TARGET="_BLANK">rdemario-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/595" TARGET="_BLANK">rdemario-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/596" TARGET="_BLANK">rdemario-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/846" TARGET="_BLANK">rdemario-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/929" TARGET="_BLANK">rdemario-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/982" TARGET="_BLANK">rdemario-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1626#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario Obs. 2/6/18</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1955#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario-Module 9</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2217#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario-Module 10</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 467, &quot;rdemario-7&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>0 verified
+              <BR/>301 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/17 reviewed</A>
+            </TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/609" TARGET="_BLANK">jrogers2-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/610" TARGET="_BLANK">jrogers2-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/611" TARGET="_BLANK">jrogers2-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/848" TARGET="_BLANK">jrogers2-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/926" TARGET="_BLANK">jrogers2-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/984" TARGET="_BLANK">jrogers2-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/1028" TARGET="_BLANK">jrogers2-7</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1481#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Obs. 2/1/18</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1956#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 8</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1957#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 9</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2218#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 10</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 464, &quot;jrogers2-8&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>126 verified
+              <BR/>276 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">9/17 reviewed</A>
+            </TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/606" TARGET="_BLANK">cskunda-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/607" TARGET="_BLANK">cskunda-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/608" TARGET="_BLANK">cskunda-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/850" TARGET="_BLANK">cskunda-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/928" TARGET="_BLANK">cskunda-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/983" TARGET="_BLANK">cskunda-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/1027" TARGET="_BLANK">cskunda-7</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1803#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">cskunda-Obs. 2/14/18</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2219#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">cskunda-Module 10</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 462, &quot;cskunda-8&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+    </DIV>
+  </DIV>
+
+
+  <!-- Term 2-->
+  <h2>Term 2</h2>
+  <!-- DIV experiment: Fixed Table, no rowspan -->
+  <DIV CLASS="container_div">
+    <DIV CLASS="fixed_left">
+      <TABLE class="students_table">
+        <THEAD>
+          <TR>
+            <TH CLASS="student_head">
+              <DIV>Teacher</DIV>
+              <DIV>Candidates</DIV>
+            </TH>
+            <TH CLASS="timestamp_head">
+              <DIV>Data</DIV>
+              <DIV>Timestamp</DIV>
+            </TH>
+          </TR>
+        </THEAD>
+        <TBODY>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1593#tab-assignments" TARGET="_BLANK">Candidate Anel</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1228#tab-assignments" TARGET="_BLANK">Rachel De Mario</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1230#tab-assignments" TARGET="_BLANK">Joseph Rogers</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1231#tab-assignments" TARGET="_BLANK">Carly Skunda</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+    </DIV>
+
+    <!-- DIV experiment: Scrolling Table -->
+    <DIV CLASS="scrolling_right">
+      <TABLE class="students_table">
+        <THEAD class="thead_with_rowspan">
+          <TR>
+            <TH ROWSPAN="2">
+              <DIV>Clinical Experience</DIV>
+              <DIV>Hours</DIV>
+            </TH>
+            <TH ROWSPAN="2">
+              <DIV>Module 7</DIV>
+              <DIV STYLE="font-weight:normal">(24 submissions)</DIV>
+            </TH>
+            <TH ROWSPAN="2">
+              <DIV>Module 8</DIV>
+              <DIV STYLE="font-weight:normal">(5 submissions)</DIV>
+            </TH>
+            <TH ROWSPAN="2">
+              <DIV>Module 9</DIV>
+              <DIV STYLE="font-weight:normal">(17 submissions)</DIV>
+            </TH>
+            <TH ROWSPAN="2">
+              <DIV>Module 10</DIV>
+              <DIV STYLE="font-weight:normal">(18 submissions)</DIV>
+            </TH>
+            <TH COLSPAN="2">
+              <DIV>Module 11</DIV>
+            </TH>
+            <TH ROWSPAN="2">
+              <DIV>Term Grade</DIV>
+            </TH>
+            <TH COLSPAN="13" ROWSPAN="2">Observation Assignments</TH>
+          </TR>
+          <TR>
+              <TH><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/77/statistics" TARGET="_BLANK">Registered for EENA?</A></TH>
+              <TH><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/78/statistics" TARGET="_BLANK">Verify edTPA Zoom</A></TH>
+            </TR>
+        </THEAD>
+        <TBODY>
+          <TR>
+            <TD>0 verified
+              <BR/>0 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/86/quizzes/77/history?quiz_submission_id=57" TARGET="_BLANK">True</A></TD>
+            <TD><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/78/history?quiz_submission_id=66" TARGET="_BLANK">Not submitted</A></TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221593%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1265#%7B%22student_id%22%3A%221593%22%7D" TARGET="_BLANK">Test Observation 2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 789, &quot;cabuechler-1&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>0 verified
+              <BR/>315 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">24/24 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">9/16 reviewed</A>
+            </TD>
+            <TD><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/77/history?quiz_submission_id=57" TARGET="_BLANK">True</A></TD>
+            <TD><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/78/history?quiz_submission_id=66" TARGET="_BLANK">Not submitted</A></TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/594" TARGET="_BLANK">rdemario-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/595" TARGET="_BLANK">rdemario-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/596" TARGET="_BLANK">rdemario-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/846" TARGET="_BLANK">rdemario-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/929" TARGET="_BLANK">rdemario-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/982" TARGET="_BLANK">rdemario-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1626#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario Obs. 2/6/18</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1955#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario-Module 9</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2217#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario-Module 10</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 467, &quot;rdemario-7&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>0 verified
+              <BR/>301 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">24/24 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/17 reviewed</A>
+            </TD>
+            <TD><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/77/history?quiz_submission_id=57" TARGET="_BLANK">True</A></TD>
+            <TD><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/78/history?quiz_submission_id=66" TARGET="_BLANK">Not submitted</A></TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/609" TARGET="_BLANK">jrogers2-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/610" TARGET="_BLANK">jrogers2-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/611" TARGET="_BLANK">jrogers2-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/848" TARGET="_BLANK">jrogers2-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/926" TARGET="_BLANK">jrogers2-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/984" TARGET="_BLANK">jrogers2-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/1028" TARGET="_BLANK">jrogers2-7</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1481#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Obs. 2/1/18</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1956#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 8</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1957#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 9</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2218#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 10</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 464, &quot;jrogers2-8&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>126 verified
+              <BR/>276 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">21/23 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">9/17 reviewed</A>
+            </TD>
+            <TD><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/77/history?quiz_submission_id=57" TARGET="_BLANK">True</A></TD>
+            <TD><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/78/history?quiz_submission_id=66" TARGET="_BLANK">Not submitted</A></TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/606" TARGET="_BLANK">cskunda-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/607" TARGET="_BLANK">cskunda-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/608" TARGET="_BLANK">cskunda-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/850" TARGET="_BLANK">cskunda-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/928" TARGET="_BLANK">cskunda-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/983" TARGET="_BLANK">cskunda-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/1027" TARGET="_BLANK">cskunda-7</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1803#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">cskunda-Obs. 2/14/18</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2219#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">cskunda-Module 10</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 462, &quot;cskunda-8&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+    </DIV>
+  </DIV>
+
+  <!-- Term 2A -->
+  <h2>Term 2A</h2>
+  <DIV CLASS="container_div">
+    <DIV CLASS="fixed_left">
+      <TABLE class="students_table">
+        <THEAD>
+          <TR>
+            <TH CLASS="student_head">
+              <DIV>Teacher</DIV>
+              <DIV>Candidates</DIV>
+            </TH>
+            <TH CLASS="timestamp_head">
+              <DIV>Data</DIV>
+              <DIV>Timestamp</DIV>
+            </TH>
+          </TR>
+        </THEAD>
+        <TBODY>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1593#tab-assignments" TARGET="_BLANK">Candidate Anel</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1228#tab-assignments" TARGET="_BLANK">Rachel De Mario</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1230#tab-assignments" TARGET="_BLANK">Joseph Rogers</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1231#tab-assignments" TARGET="_BLANK">Carly Skunda</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+    </DIV>
+
+    <!-- Scrolling table, no rowsapn -->
+    <DIV CLASS="scrolling_right">
+      <TABLE class="students_table">
+        <THEAD>
+          <TR>
+            <TH>
+              <DIV>Clinical Experience</DIV>
+              <DIV>Hours</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 7</DIV>
+              <DIV STYLE="font-weight:normal">(24 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 8</DIV>
+              <DIV STYLE="font-weight:normal">(5 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Term Grade</DIV>
+            </TH>
+            <TH COLSPAN="13">Observation Assignments</TH>
+          </TR>
+        </THEAD>
+        <TBODY>
+          <TR>
+            <TD>0 verified
+              <BR/>0 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221593%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1265#%7B%22student_id%22%3A%221593%22%7D" TARGET="_BLANK">Test Observation 2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 789, &quot;cabuechler-1&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>0 verified
+              <BR/>315 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">9/16 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/594" TARGET="_BLANK">rdemario-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/595" TARGET="_BLANK">rdemario-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/596" TARGET="_BLANK">rdemario-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/846" TARGET="_BLANK">rdemario-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/929" TARGET="_BLANK">rdemario-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/982" TARGET="_BLANK">rdemario-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1626#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario Obs. 2/6/18</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1955#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario-Module 9</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2217#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario-Module 10</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 467, &quot;rdemario-7&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>0 verified
+              <BR/>301 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/609" TARGET="_BLANK">jrogers2-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/610" TARGET="_BLANK">jrogers2-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/611" TARGET="_BLANK">jrogers2-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/848" TARGET="_BLANK">jrogers2-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/926" TARGET="_BLANK">jrogers2-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/984" TARGET="_BLANK">jrogers2-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/1028" TARGET="_BLANK">jrogers2-7</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1481#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Obs. 2/1/18</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1956#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 8</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1957#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 9</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2218#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 10</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 464, &quot;jrogers2-8&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>126 verified
+              <BR/>276 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/606" TARGET="_BLANK">cskunda-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/607" TARGET="_BLANK">cskunda-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/608" TARGET="_BLANK">cskunda-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/850" TARGET="_BLANK">cskunda-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/928" TARGET="_BLANK">cskunda-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/983" TARGET="_BLANK">cskunda-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/1027" TARGET="_BLANK">cskunda-7</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1803#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">cskunda-Obs. 2/14/18</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2219#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">cskunda-Module 10</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 462, &quot;cskunda-8&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+    </DIV>
+  </DIV>
+
+
+
+  <H2>Term 2B</H2>
+  <!-- DIV experiment: Fixed Table, no rowspan -->
+  <DIV CLASS="container_div">
+    <DIV CLASS="fixed_left">
+      <TABLE class="students_table">
+        <THEAD>
+          <TR>
+            <TH CLASS="student_head">
+              <DIV>Teacher</DIV>
+              <DIV>Candidates</DIV>
+            </TH>
+            <TH CLASS="timestamp_head">
+              <DIV>Data</DIV>
+              <DIV>Timestamp</DIV>
+            </TH>
+          </TR>
+        </THEAD>
+        <TBODY>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1593#tab-assignments" TARGET="_BLANK">Candidate Anel</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1228#tab-assignments" TARGET="_BLANK">Rachel De Mario</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1230#tab-assignments" TARGET="_BLANK">Joseph Rogers</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1231#tab-assignments" TARGET="_BLANK">Carly Skunda</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+    </DIV>
+
+    <!-- DIV experiment: Scrolling Table, no rowspan -->
+    <DIV CLASS="scrolling_right">
+      <TABLE class="students_table">
+        <THEAD class="thead_with_rowspan">
+          <TR>
+            <TH ROWSPAN="2">
+              <DIV>Clinical Experience</DIV>
+              <DIV>Hours</DIV>
+            </TH>
+            <TH ROWSPAN="2">
+              <DIV>Module 9</DIV>
+              <DIV STYLE="font-weight:normal">(17 submissions)</DIV>
+            </TH>
+            <TH ROWSPAN="2">
+              <DIV>Module 10</DIV>
+              <DIV STYLE="font-weight:normal">(18 submissions)</DIV>
+            </TH>
+            <TH COLSPAN="2">
+              <DIV>Module 11</DIV>
+            </TH>
+            <TH ROWSPAN="2">
+              <DIV>Term Grade</DIV>
+            </TH>
+            <TH COLSPAN="13" ROWSPAN="2">Observation Assignments</TH>
+          </TR>
+          <TR>
+            <TH><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/77/statistics" TARGET="_BLANK">Registered for EENA?</A></TH>
+            <TH><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/78/statistics" TARGET="_BLANK">Verify edTPA Zoom</A></TH>
+          </TR>
+        </THEAD>
+        <TBODY>
+          <TR>
+            <TD>0 verified
+              <BR/>0 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/77/history?quiz_submission_id=57" TARGET="_BLANK">True</A></TD>
+            <TD><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/78/history?quiz_submission_id=66" TARGET="_BLANK">Not submitted</A></TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221593%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1265#%7B%22student_id%22%3A%221593%22%7D" TARGET="_BLANK">Test Observation 2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 789, &quot;cabuechler-1&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>0 verified
+              <BR/>315 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">24/24 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/77/history?quiz_submission_id=57" TARGET="_BLANK">True</A></TD>
+            <TD><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/78/history?quiz_submission_id=66" TARGET="_BLANK">Not submitted</A></TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/594" TARGET="_BLANK">rdemario-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/595" TARGET="_BLANK">rdemario-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/596" TARGET="_BLANK">rdemario-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/846" TARGET="_BLANK">rdemario-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/929" TARGET="_BLANK">rdemario-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/982" TARGET="_BLANK">rdemario-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1626#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario Obs. 2/6/18</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1955#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario-Module 9</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2217#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario-Module 10</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 467, &quot;rdemario-7&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>0 verified
+              <BR/>301 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">24/24 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/17 reviewed</A>
+            </TD>
+            <TD><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/77/history?quiz_submission_id=57" TARGET="_BLANK">True</A></TD>
+            <TD><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/78/history?quiz_submission_id=66" TARGET="_BLANK">Not submitted</A></TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/609" TARGET="_BLANK">jrogers2-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/610" TARGET="_BLANK">jrogers2-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/611" TARGET="_BLANK">jrogers2-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/848" TARGET="_BLANK">jrogers2-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/926" TARGET="_BLANK">jrogers2-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/984" TARGET="_BLANK">jrogers2-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/1028" TARGET="_BLANK">jrogers2-7</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1481#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Obs. 2/1/18</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1956#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 8</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1957#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 9</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2218#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 10</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 464, &quot;jrogers2-8&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>126 verified
+              <BR/>276 total</TD>
+            <TD>
+              <A HREF="./96/section/863/module/66/student/1231">21/23 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/77/history?quiz_submission_id=57" TARGET="_BLANK">True</A></TD>
+            <TD><A HREF="https://calstateteach.instructure.com/courses/86/quizzes/78/history?quiz_submission_id=66" TARGET="_BLANK">Not submitted</A></TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/606" TARGET="_BLANK">cskunda-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/607" TARGET="_BLANK">cskunda-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/608" TARGET="_BLANK">cskunda-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/850" TARGET="_BLANK">cskunda-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/928" TARGET="_BLANK">cskunda-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/983" TARGET="_BLANK">cskunda-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/1027" TARGET="_BLANK">cskunda-7</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1803#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">cskunda-Obs. 2/14/18</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2219#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">cskunda-Module 10</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 462, &quot;cskunda-8&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+    </DIV>
+  </DIV>
+
+  <H2>Term 3</H2>
+  <DIV CLASS="container_div">
+    <DIV CLASS="fixed_left">
+      <TABLE class="students_table">
+        <THEAD>
+          <TR>
+            <TH CLASS="student_head">
+              <DIV>Teacher</DIV>
+              <DIV>Candidates</DIV>
+            </TH>
+            <TH CLASS="timestamp_head">
+              <DIV>Data</DIV>
+              <DIV>Timestamp</DIV>
+            </TH>
+          </TR>
+        </THEAD>
+        <TBODY>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1593#tab-assignments" TARGET="_BLANK">Candidate Anel</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1228#tab-assignments" TARGET="_BLANK">Rachel De Mario</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1230#tab-assignments" TARGET="_BLANK">Joseph Rogers</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am</DIV>
+            </TD>
+          </TR>
+          <TR>
+            <TD CLASS="student_data">
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/grades/1231#tab-assignments" TARGET="_BLANK">Carly Skunda</A>
+              </DIV>
+            </TD>
+            <TD CLASS="timestamp_data">
+              <DIV>##:##am </DIV>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+    </DIV>
+
+    <!-- DIV experiment: Scrolling table, no rowsapn -->
+    <DIV CLASS="scrolling_right">
+      <TABLE class="students_table">
+        <THEAD>
+          <TR>
+            <TH>
+              <DIV>Clinical Experience</DIV>
+              <DIV>Hours</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 12</DIV>
+              <DIV STYLE="font-weight:normal">(24 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 13</DIV>
+              <DIV STYLE="font-weight:normal">(5 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 14</DIV>
+              <DIV STYLE="font-weight:normal">(17 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 15</DIV>
+              <DIV STYLE="font-weight:normal">(18 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Module 16</DIV>
+              <DIV STYLE="font-weight:normal">(3 submissions)</DIV>
+            </TH>
+            <TH>
+              <DIV>Term Grade</DIV>
+            </TH>
+            <TH COLSPAN="13">Observation Assignments</TH>
+          </TR>
+        </THEAD>
+        <TBODY>
+          <TR>
+            <TD>0 verified
+              <BR/>0 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail_quiz.html">0/0 reviewed</A>
+            </TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221593%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1265#%7B%22student_id%22%3A%221593%22%7D" TARGET="_BLANK">Test Observation 2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 789, &quot;cabuechler-1&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>0 verified
+              <BR/>315 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">24/24 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">9/16 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail_quiz.html">1/2 reviewed</A>
+            </TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/594" TARGET="_BLANK">rdemario-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/595" TARGET="_BLANK">rdemario-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/596" TARGET="_BLANK">rdemario-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/846" TARGET="_BLANK">rdemario-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/929" TARGET="_BLANK">rdemario-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/982" TARGET="_BLANK">rdemario-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1626#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario Obs. 2/6/18</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1955#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario-Module 9</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2217#%7B%22student_id%22%3A%221228%22%7D" TARGET="_BLANK">rdemario-Module 10</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 467, &quot;rdemario-7&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>0 verified
+              <BR/>301 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">24/24 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail_quiz.html">3/3 reviewed</A>
+            </TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/609" TARGET="_BLANK">jrogers2-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/610" TARGET="_BLANK">jrogers2-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/611" TARGET="_BLANK">jrogers2-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/848" TARGET="_BLANK">jrogers2-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/926" TARGET="_BLANK">jrogers2-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/984" TARGET="_BLANK">jrogers2-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/1028" TARGET="_BLANK">jrogers2-7</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1481#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Obs. 2/1/18</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1956#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 8</A>
+              <BR/>
+              <SPAN>submitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1957#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 9</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2218#%7B%22student_id%22%3A%221230%22%7D" TARGET="_BLANK">jrogers2-Module 10</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 464, &quot;jrogers2-8&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+          <TR>
+            <TD>126 verified
+              <BR/>276 total</TD>
+            <TD>
+              <A HREF="./module_detail.html">21/23 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">17/17 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail.html">5/5 reviewed</A>
+            </TD>
+            <TD>
+              <A HREF="./module_detail_quiz.html">0/3 reviewed</A>
+            </TD>
+            <TD>
+              <DIV>
+                <A HREF="https://calstateteach.instructure.com/courses/86/gradebook/speed_grader?assignment_id=2137#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">Not graded</A>
+              </DIV>
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/606" TARGET="_BLANK">cskunda-1</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/607" TARGET="_BLANK">cskunda-2</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/608" TARGET="_BLANK">cskunda-3</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/850" TARGET="_BLANK">cskunda-4</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/928" TARGET="_BLANK">cskunda-5</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/983" TARGET="_BLANK">cskunda-6</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/assignments/1027" TARGET="_BLANK">cskunda-7</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=1803#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">cskunda-Obs. 2/14/18</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD>
+              <A HREF="https://calstateteach.instructure.com/courses/70/gradebook/speed_grader?assignment_id=2219#%7B%22student_id%22%3A%221231%22%7D" TARGET="_BLANK">cskunda-Module 10</A>
+              <BR/>
+              <SPAN>unsubmitted</SPAN>
+              <!--  SPAN= critItStatusString-->
+            </TD>
+            <TD></TD>
+            <TD></TD>
+            <TD>
+              <BUTTON onclick="postAssignment(70, 462, &quot;cskunda-8&quot;)" disabled>Add assignment</BUTTON>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+    </DIV>
+  </DIV>
+
+</body>
+
+</html>

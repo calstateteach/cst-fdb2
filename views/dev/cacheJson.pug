@@ -1,0 +1,18 @@
+doctype html
+html(lang='en')
+  head
+    title CST Dashboard Canvas Cache Object
+    link(rel="stylesheet", href=APP_URL + "LatoLatin/latolatinfonts.css")
+    link(rel="stylesheet", href=APP_URL + "style.css")
+  body
+    p
+      A(HREF="./home") Home
+    H1 
+      A(HREF='canvasCache') CST Dashboard Canvas Cache Object
+    H2= cacheKey
+    P= 'Timestamp: ' + timestamp.toLocaleString('us-EN')
+    P= 'Length: ' + json.length
+    PRE= JSON.stringify(json, null, 2)
+    HR
+    - var now = new Date()
+    P(STYLE="font-size: smaller")= now
