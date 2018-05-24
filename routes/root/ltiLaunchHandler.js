@@ -9,10 +9,11 @@
 05.18.2018 tps Add routing logic for students.
 */
 
-const async = require('async');
-const camApi = require('../../libs/camApi');
-var isValidRequest = require('../../libs/oauthHelper').validateLtiRequest;
-const canvasCache = require('../../libs/canvasCache');
+// const async = require('async');
+const camApi        = require('../../libs/camApi');
+var isValidRequest  = require('../../libs/oauthHelper').validateLtiRequest;
+const canvasCache   = require('../../libs/canvasCache');
+const appConfig     = require('../../libs/appConfig');
 
 function launchLti(req, res) {
   // Landing page for an LTI launch request.
@@ -116,7 +117,7 @@ function postParamsHandler(req, res) {
  */
 function redirectStudent(req, res, code) {
   // Find CAM course's corresponding iSupervision course
-  const matchingTerms = req.app.locals.moduleMap.json.filter( e => e.code === code);
+  const matchingTerms = appConfig.getTerms.filter( e => e.code === code);
   if (matchingTerms.length > 0) {
     const courseId = matchingTerms[0].iSupe_course_id;
     const redirectUrl = `${req.app.locals.CST_CANVAS_BASE_URL}${courseId}/assignments`;
