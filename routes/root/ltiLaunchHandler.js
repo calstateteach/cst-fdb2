@@ -7,6 +7,7 @@
 05.17.2018 tps Redirect based on validating user in CAM.
 05.18.2018 tps Add routing to show post parameters, for debugging.
 05.18.2018 tps Add routing logic for students.
+05.24.2018 tps Import LTI launch logic for students from old version.
 */
 
 // const async = require('async');
@@ -71,29 +72,6 @@ function launchLti(req, res) {
           return res.render('dev/err', { err: "No redirect found for the CAM user type of " + userType});
         }
       });
-
-
-      // // Redirect user based on their role
-      // var roles = req.body.custom_canvas_membership_roles.split(',');
-      // req.session.fdb_roles = roles;
-
-      // // Temporarily view session data instead of error message
-      // //res.redirect('sessionData');
-
-      // if (roles.includes('CST-Admin')) {
-      //   // Send faculty admin user to faculty list page
-      //   res.redirect('dev/facultyList');
-      // } else if (roles.includes('TeacherEnrollment')) {
-      //   // Send user to their faculty dashboard page.
-      //   res.redirect(`dash/facultyPleaseWait/${req.body.custom_canvas_user_id}`);
-      //   // res.redirect(`dash/pleaseWait?redirectUrl=${req.app.locals.APP_URL}dash/faculty/${req.body.custom_canvas_user_id}`);
-      // } else if (roles.includes('StudentEnrollment')) {
-      //   // Resend the post to the CE hours web app
-      //   res.redirect(307, process.env.CST_STUDENT_URL);
-      // } else {
-      //   res.render('dev/err', { err: "No redirect found for the Canvas user's role."});
-      // }
-
     } else {
       res.redirect('badRequest');
     }
@@ -117,42 +95,14 @@ function postParamsHandler(req, res) {
  */
 function redirectStudent(req, res, code) {
   // Find CAM course's corresponding iSupervision course
-  const matchingTerms = appConfig.getTerms.filter( e => e.code === code);
+  const matchingTerms = appConfig.getTerms().filter( e => e.code === code);
   if (matchingTerms.length > 0) {
     const courseId = matchingTerms[0].iSupe_course_id;
-    const redirectUrl = `${req.app.locals.CST_CANVAS_BASE_URL}${courseId}/assignments`;
+    const redirectUrl = `${req.app.locals.CST_CANVAS_BASE_URL}courses/${courseId}/assignments`;
     return res.redirect(redirectUrl);
   } else {
     return res.render('dev/err', { err: 'Did not find iSupervision course for term code: ' + code });
   }
-
-//   // List all available iSupervision courses.
-//   var iSupeCourseIds = req.app.locals.moduleMap.json.map( e => e.iSupe_course_id);
-
-//   // Remove duplicate iSupervision courses
-//   iSupeCourseIds = new Set(iSupeCourseIds);
-
-//   // Iteratee function to search iSupervision courses for the student's enrollment
-//   function isInCourse(courseId, callback) {
-//     canvasCache.getCourseEnrollments(req, courseId, true, (err, json) => {
-//       if (err) return callback(err);
-//       const enrollments = json.filter(
-//         e => (e.user_id === userId) && (e.type === 'StudentEnrollment')
-//       );
-//       return callback(null, enrollments.length > 0);
-//     });
-//   }
-
-//   // If the user is in one of the iSupervision courses, redirect them.
-//   async.filter(iSupeCourseIds, isInCourse, (err, results) => {
-//     if (err) return res.render('dev/err', { err: err });
-//     if (results.length > 0) {
-//       const redirectUrl = `https://calstateteach.instructure.com/courses/${results[0]}/assignments`;
-//       return res.redirect(redirectUrl);
-//     } else {
-//       return res.render('dev/err', { err: 'Unable to find iSupervision course for Canvas user ID ' + userId });
-//     }
-//  }); // end async filter
 }
 
 
