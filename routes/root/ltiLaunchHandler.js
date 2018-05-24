@@ -63,7 +63,7 @@ function launchLti(req, res) {
         const userType = camUser.user_type;
         if (userType ==='Faculty') {
           // Send user to their faculty dashboard page.
-          return res.redirect(`dash/facultyPleaseWait/${req.body.custom_canvas_user_id}`);
+          return res.redirect(`dash/${req.body.custom_canvas_user_id}`);
         } else if (userType === 'Student') {
           return redirectStudent(req, res, camUser.course);
         } else {
@@ -119,7 +119,7 @@ function redirectStudent(req, res, code) {
   const matchingTerms = req.app.locals.moduleMap.json.filter( e => e.code === code);
   if (matchingTerms.length > 0) {
     const courseId = matchingTerms[0].iSupe_course_id;
-    const redirectUrl = `https://calstateteach.instructure.com/courses/${courseId}/assignments`;
+    const redirectUrl = `${req.app.locals.CST_CANVAS_BASE_URL}${courseId}/assignments`;
     return res.redirect(redirectUrl);
   } else {
     return res.render('dev/err', { err: 'Did not find iSupervision course for term code: ' + code });
