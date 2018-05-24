@@ -14,6 +14,7 @@
 04.24.2018 tps Add route for endpoints for AJAX calls.
 05.17.2018 tps Load configuration files & prefetched data before starting Web app.
 05.24.2018 tps Load configuration item for base URL for Canvas API & Web app.
+05.24.2018 tps Load configuration URL for CAM user search.
 */
 require('dotenv').config();
 const async = require('async');
@@ -69,6 +70,9 @@ app.locals.CAM_CE_HOURS_URL = process.env.CAM_CE_HOURS_URL;
 
 // Base URL for constructing Canvas API & Web app links
 app.locals.CST_CANVAS_BASE_URL = process.env[process.env.CST_CANVAS_BASE_URL];
+
+// Template string for CAM API user search
+app.locals.CAM_USER_SEARCH_URL = process.env.CAM_USER_SEARCH_URL;
 
 
 //******************** Configure Routers ********************//
