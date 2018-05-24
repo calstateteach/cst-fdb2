@@ -63,7 +63,7 @@ function launchLti(req, res) {
         const userType = camUser.user_type;
         if (userType ==='Faculty') {
           // Send user to their faculty dashboard page.
-          return res.redirect(`dash/${req.body.custom_canvas_user_id}`);
+          return res.redirect(`dash/faculty/${req.body.custom_canvas_user_id}`);
         } else if (userType === 'Student') {
           return redirectStudent(req, res, camUser.course);
         } else {
