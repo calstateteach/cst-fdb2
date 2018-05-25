@@ -93,16 +93,17 @@ async.series([
 function preflightDone(err) {
   if (err) return console.log("Unable to start dashboard:", err);
 
+  // Start timer to keep cache refreshed
+  const timer = require('./libs/canvasCacheTimer').start();
+
   // Handle ^C during development?
   process.on('SIGINT', function () {
     console.log("Caught interrupt signal");
+    clearInterval(timer);
     process.exit();
   });
 
   app.listen(APP_PORT, function () {
     console.log('listening on', APP_PORT);
-
-    // Periodically prime the Canvas data cache
-    // require('./libs/canvasCacheTimer').start(app);
   });
 }

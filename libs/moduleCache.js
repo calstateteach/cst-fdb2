@@ -148,8 +148,46 @@ function loadDiskCache(callback) {
   });
 }
 
+/**
+ * Get the timestamp of the oldest file in the cache.
+ * Use to figure out if it's time to refresh the cache.
+ */
+function getOldestTimestamp(callback) {
+  // callback signature: (err, Date)
+
+  fs.readdir(CACHE_DIR, (err, files) => {
+    if (err) return callback(err);
+
+    // We only care about json files
+    // File names look like "courses_199_enrollments.json"
+    files = files.filter( s => s.endsWith('.json'));
+
+    // There might not be any files to load. Not sure what the oldest date is in this case.
+    var oldest = new Date();
+    if (files.length <= 0) return callback(null, oldest);
+
+    var iterationCount = 0; // Tells us when to stop iterations
+    var doneCount = files.length;
+    for (var filename of files) {
+
+      // Retrieve a timestamp for the file data
+      fs.stat(CACHE_DIR + filename, (fileStatErr, stat) => {
+        if (err) return callback(fileStatErr);
+
+        // See if this is the oldest timestamp yet
+        if (oldest > stat.mtime) oldest = stat.mtime;
+
+        // See if we're done checking all the files
+        if (++iterationCount >= doneCount) return callback(null, oldest);
+      }); // end callback for file stats
+    } // end loop through files
+  }); // end callback for file list
+}
+
+
 //******************** Exported Functions ********************//
 exports.deleteDiskCache = deleteDiskCache;
 exports.loadDiskCache = loadDiskCache;
 exports.loadQuery = loadQuery;
 exports.get = function(queryKey) { return storage[queryKey]; }
+exports.getOldestTimestamp = getOldestTimestamp;
