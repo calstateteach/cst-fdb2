@@ -192,8 +192,7 @@ html(lang='en')
               IMG(SRC=APP_URL + "spinner_small.gif")
               
       //- Debug stuff
-      //- if isDevMode
-      if false
+      if isDevModeOn
         DIV(STYLE="margin-top:100px")
           TABLE(CLASS='data')
             TR
@@ -217,7 +216,18 @@ html(lang='en')
               TD courseModules
               TD
                 PRE= JSON.stringify(courseModules, null, 2)
-
+          
+          //- Display session data for developers
+          H2 Sever Session
+          TABLE(CLASS='data')
+            each val, key in sessionData
+              tr
+                td(style="font-weight: bold;")= key + ":"
+                if typeof val === 'object'
+                  td
+                    PRE= JSON.stringify(val, null, 2)
+                else
+                  td= val
       DIV(ID=divStatus)
 
       //- Stash data for browser scripts

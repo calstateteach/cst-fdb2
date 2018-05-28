@@ -12,6 +12,7 @@ TODO:
 04.21.2018 tps Created.
 05.17.2018 tps Refactor without async calls, using already cached data.
 05.23.2018 tps Pass add permissions to the page template.
+05.26.2018 tps Pass session data to page for dev mode.
 */
 
 // ******************** Module Imports ********************//
@@ -179,7 +180,8 @@ function get(req, res) {
     user: user,
     userTerms: userTerms,
     courseModules: courseModules,
-    addConfig: appConfig.getAdds()
+    addConfig: appConfig.getAdds(),
+    sessionData: req.session
   }
   return res.render('dash/facultyDash', params);
   // return res.render('dev/work', params);

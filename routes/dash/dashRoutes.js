@@ -5,19 +5,19 @@
 const express = require('express');
 const router = express.Router();
 
-const protectCanvasData = require('./protectCanvasData');
+// const protectCanvasData = require('./protectCanvasData');
 
 // ******************** Helper Functions ********************//
 
-function renderFacultyPage(req, res) {
-  /* Helper callback function that renders dashboard page
-  for a faculty member.
-  */
-  // Canvas ID of faculty member is passed in the URL
-  var userId = parseInt(req.params['userId'], 10);
-  protectCanvasData(req, res, userId, null, renderFacultyPageSecured);
+// function renderFacultyPage(req, res) {
+//   /* Helper callback function that renders dashboard page
+//   for a faculty member.
+//   */
+//   // Canvas ID of faculty member is passed in the URL
+//   var userId = parseInt(req.params['userId'], 10);
+//   protectCanvasData(req, res, userId, null, renderFacultyPageSecured);
 
-} // end function renderFacultyPage
+// } // end function renderFacultyPage
 
 
 

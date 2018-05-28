@@ -1,5 +1,6 @@
 /* Render module submissions page.
 05.23.2018 tps Start refactoring for AJAX calls 
+05.26.2018 tps Pass server session data to page, for dev mode.
 */
 
 const canvasCache = require('../../libs/canvasCache');
@@ -57,7 +58,8 @@ function get(req, res) {
     user: facultyUser,
     userTerms: [termObject],
     courseModules: courseModulesObj,
-    moduleId: moduleId
+    moduleId: moduleId,
+    sessionData: req.session
   }
   // return res.render('dev/work', params);
   return res.render('dash/studentModuleSubmissions', params);

@@ -151,7 +151,23 @@ function postAssignmentHandler(req, res) {
 }
 
 
+/******************** Router Middleware *********************/
+
+/**
+ * Secure API access by making sure the requester already has
+ * an authenticated session.
+ */
+
+function secureApi(req, res, next) {
+  if (['dev', 'lti'].includes(req.session.userAuthMethod)) {
+    next();
+  } else {
+    res.send('');
+  }
+}
+
 /******************** Endpoint URLs *********************/
+router.use(secureApi);
 router.get('/sections/:sectionId/students/:studentId/submissions', studentSubmissionsHandler);
 router.get('/cehours/:emailAddress', ceHoursHandler);
 router.get('/courses/:courseId/quizzes/:quizId/submissions/:submissionId/events', quizEventsHandler);

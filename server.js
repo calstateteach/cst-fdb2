@@ -15,6 +15,7 @@
 05.17.2018 tps Load configuration files & prefetched data before starting Web app.
 05.24.2018 tps Load configuration item for base URL for Canvas API & Web app.
 05.24.2018 tps Load configuration URL for CAM user search.
+05.26.2018 tps Load configuration item for DEV_MODE.
 */
 require('dotenv').config();
 const async = require('async');
@@ -73,6 +74,9 @@ app.locals.CST_CANVAS_BASE_URL = process.env[process.env.CST_CANVAS_BASE_URL];
 
 // Template string for CAM API user search
 app.locals.CAM_USER_SEARCH_URL = process.env.CAM_USER_SEARCH_URL;
+
+// Load DEV_MODE from configuration
+app.locals.isDevModeOn = (process.env.DEV_MODE === 'On');
 
 
 //******************** Configure Routers ********************//
