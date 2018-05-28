@@ -1,6 +1,7 @@
 /* Render module submissions page.
 05.23.2018 tps Start refactoring for AJAX calls 
 05.26.2018 tps Pass server session data to page, for dev mode.
+05.28.2018 tps Don't let user tamper with URL.
 */
 
 const canvasCache = require('../../libs/canvasCache');
@@ -18,6 +19,11 @@ function get(req, res) {
   const isDevMode = req.session.userAuthMethod === 'dev';    // Indicate whether user is logged in as developer.
   const userRoles = req.session.fdb_roles;                    // Page needs to know the user's role
  
+  // Don't let user tamper with URL to see another faculty member's page.
+  const userIdSession = parseInt(req.session.custom_canvas_user_id, 10);
+  if (userIdSession != userId) {
+    res.redirect(req.app.locals.APP_URL + 'badRequest');
+  }
 
   // We'll need the user's user object to display user info.
   const facultyEnrollments = canvasCache.getFaculty();

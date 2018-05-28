@@ -13,6 +13,7 @@ TODO:
 05.17.2018 tps Refactor without async calls, using already cached data.
 05.23.2018 tps Pass add permissions to the page template.
 05.26.2018 tps Pass session data to page for dev mode.
+05.28.2018 tps Preven user from tampering with URL to get to another faculty member's dashboard.
 */
 
 // ******************** Module Imports ********************//
@@ -29,6 +30,12 @@ function get(req, res) {
   const userId = parseInt(req.params['userId'], 10);
   const isDevMode = req.session.userAuthMethod === 'dev';    // Indicate whether user is logged in as developer.
   const userRoles = req.session.fdb_roles;                    // Page needs to know the user's role
+
+  // Don't let user tamper with URL
+  const userIdSession = parseInt(req.session.custom_canvas_user_id, 10);
+  if (userIdSession != userId) {
+    res.redirect(req.app.locals.APP_URL + 'badRequest');
+  }
 
   /**
    * Initialize array containing faculty user's term courses.

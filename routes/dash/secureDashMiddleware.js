@@ -10,13 +10,14 @@ function checkUser(req, res, next) {
       next();
       break;
     case 'lti':
-      const userIdSession = parseInt(req.session.custom_canvas_user_id, 10);
-      const userIdUrl = parseInt(req.params['userId'], 10);
-      if (userIdSession === userIdUrl) {
-        next();
-      } else {
-        res.redirect(req.app.locals.APP_URL + 'badRequest');        
-      }
+      // const userIdSession = parseInt(req.session.custom_canvas_user_id, 10);
+      // const userIdUrl = parseInt(req.params['userId'], 10);
+      // if (userIdSession === userIdUrl) {
+      //   next();
+      // } else {
+      //   res.redirect(req.app.locals.APP_URL + 'badRequest');        
+      // }
+      next();
       break; 
     default:
       res.redirect(req.app.locals.APP_URL + 'badRequest');
