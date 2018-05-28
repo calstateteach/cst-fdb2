@@ -1,0 +1,43 @@
+doctype html
+html(lang='en')
+  head
+    title POST Data
+    STYLE.
+      TABLE {
+        border-collapse: collapse;
+      }
+
+      TH, TD {
+        padding: 3px;
+        border: 1px solid black;
+      }
+
+  body
+    h1 POST Data
+    TABLE.data
+      TR
+        TH Key
+        TH Value
+      each val, key in body
+        TR
+          TD= key
+          TD= val
+    h1 Request Headers
+    P= 'OriginalUrl: ' + originalUrl
+    table.data
+      TR
+        TH Key
+        TH Value
+      each val, key in reqHeaders
+        tr
+          td= key
+          td= val
+    h1 Query Parameters
+    table.data
+      TR
+        TH Key
+        TH Value
+      each val, key in query
+        tr
+          td= key
+          td= val

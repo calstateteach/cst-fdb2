@@ -43,9 +43,9 @@ function launchLti(req, res) {
       const emailLogin         = req.body['custom_canvas_user_login_id'];
       const canvasUserId       = parseInt(req.body['custom_canvas_user_id'], 10);
 
-      // Reveal POST data for testing
-      if (refererRoute == 'showpost') {
-        return postParamsHandler(req, res);
+      // Handle routing of secret route parameter
+      if (refererRoute) {
+        return routeParamHandler(req, res, refererRoute);
       }
 
       // 05.17.2018 tps Use CAM data to determine user's role.
@@ -80,14 +80,18 @@ function launchLti(req, res) {
 
 //************************* Route Handling Functions *************************
 
-function postParamsHandler(req, res) {
-  params = {
-    originalUrl: req.originalUrl,
-    body: req.body,
-    reqHeaders: req.headers,
-    query: req.query
-  };
-  return res.render('dev/showpost', params);
+function routeParamHandler(req, res, refererRoute) {
+  if (refererRoute === 'showpost') {
+    params = {
+      originalUrl: req.originalUrl,
+      body: req.body,
+      reqHeaders: req.headers,
+      query: req.query
+    };
+      return res.render('dev/showpost', params);
+    } else {
+      return res.send('Unhandled referer route ' + refererRoute);
+    }
 }
 
 /**
