@@ -6,6 +6,7 @@
 02.14.2018 tps coursesConfig page now obsolete.
 02.27.2018 tps No longer need connection to CE hours Mongo DB.
 03.01.2018 tps Used temporary handler to test module detail page.
+05.28.2018 tps Remove obsolete clearCanvasDataHandler
 */
 
 const express = require('express');
@@ -13,7 +14,7 @@ const router = express.Router();
 const routeHandlers = require('./devHandlers');
 // const coursesConfigHandler = require('./coursesConfigHandler');
 // const facultyListHandler = require('./facultyListHandler');
-const clearCanvasDataHandler = require('../../libs/clearCanvasDataHandler');
+// const clearCanvasDataHandler = require('../../libs/clearCanvasDataHandler');
 // const oauthFormHandler = require('./oauthFormHandler');
 // const critHandler = require('./critHandler');
 const canvasCacheHandler = require('./canvasCacheHandler');
@@ -32,7 +33,7 @@ router.post('/destroySession', routeHandlers.destroySession);
 // router.post('/coursesConfig', coursesConfigHandler.put);
 // router.get('/facultyList', facultyListHandler);
 router.get('/facultyList', require('./facultyListHandler'));
-router.post('/clearCanvasData', clearCanvasDataHandler);
+// router.post('/clearCanvasData', clearCanvasDataHandler);
 // router.get('/critiqueItStats', critHandler.getStats);
 // router.get('/testCeDb', require('./ceDbHandler').getTestCeDb);
 

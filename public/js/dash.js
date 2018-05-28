@@ -2,6 +2,7 @@
 // 04.24.2018 tps Created.
 // 04.25.2018 tps Added crude callback system for indicating when data done loading.
 // 05.21.2018 tps Revise for reorganization of Canvas courses for Summer 2018 term.
+// 05.28.2018 tps Revise for survey module 11's layout.
 
 // Wait for DOM to load before trying to read dashboard framework data
 document.addEventListener("DOMContentLoaded", initGlobals);
@@ -53,6 +54,7 @@ function loadSubmissions() {
       if (term.survey_module) {
         targetAjaxCount += 2;
       }
+
     } // Loop through students
   } // Loop through terms
 
@@ -106,44 +108,52 @@ function getSubmissionsByStudent(termCode, sectionId, studentId, done) {
         const term = window.CST.terms.find( e => e.code === termCode);
         for (let module_index of term.module_indices) {
 
-          // For survey modules we show quiz answers
-          if (module_index === term.survey_module) {
-            // TODO: get quiz answers
+          // // For survey modules we show quiz answers
+          // if (module_index === term.survey_module) {
+          //   // TODO: get quiz answers
 
-          // For normal modules, display the submission status summary
-          } else {
-            let module = window.CST.courseModules[term.course_id][module_index];
-            let totalItems = module.items.length;
-            let unsubmittedItems = 0;
-            let gradedItems = 0;
-            
-            // Accumulate summary counts for submissions to the module
-            for (let item of module.items) {
-              if (item.type === "Assignment") {
-                const submission = submissions.find(e => e.assignment_id === item.content_id);
-                if (submission) {
-                  const workflowState = submission.workflow_state;
-                  if (workflowState === 'unsubmitted') ++unsubmittedItems;
-                  if (workflowState === 'graded') ++gradedItems;
-                }
-              }
+          // // For normal modules, display the submission status summary
+          // } else {
+
+          // Display submission status summaries
+          let module = window.CST.courseModules[term.course_id][module_index];
+          let totalItems = module.items.length;
+          let unsubmittedItems = 0;
+          let gradedItems = 0;
+          
+          // Accumulate summary counts for submissions to the module.
+          var moduleAssignmentItems = module.items.filter( e => e.type === 'Assignment');
+
+          // Skip modules with no assignments.
+          if (moduleAssignmentItems.length < 1) continue;
+          
+          for (let item of moduleAssignmentItems) {
+            const submission = submissions.find(e => e.assignment_id === item.content_id);
+            if (submission) {
+              const workflowState = submission.workflow_state;
+              if (workflowState === 'unsubmitted') ++unsubmittedItems;
+              if (workflowState === 'graded') ++gradedItems;
             }
+          }
 
-            // Build text for module submissions summary
-            const submittedItems = totalItems - unsubmittedItems;
-            const linkText = gradedItems + '/' + submittedItems + ' reviewed'                       
+          // Build text for module submissions summary
+          const submittedItems = totalItems - unsubmittedItems;
+          const linkText = gradedItems + '/' + submittedItems + ' reviewed'                       
 
-            // Build URL to submission detail page
-            const linkUrl = `./${window.CST.facultyUser.id}/course/${term.course_id}/section/${sectionId}/module/${module.id}/student/${studentId}`
+          // Build URL to submission detail page
+          const linkUrl = `./${window.CST.facultyUser.id}/course/${term.course_id}/section/${sectionId}/module/${module.id}/student/${studentId}`
 
-            // Populate the DOM
-            const tdId = `sec_${sectionId}_stu_${studentId}_mod_${module.id}`;
-            const td = document.getElementById(tdId);
-            td.innerHTML = `<A HREF="${linkUrl}">${linkText}</A>`;
-          } // end loop through modules
+          // Populate the DOM
+          const tdId = `sec_${sectionId}_stu_${studentId}_mod_${module.id}`;
+          const td = document.getElementById(tdId);
+          td.innerHTML = `<A HREF="${linkUrl}">${linkText}</A>`;
+        } // end loop through modules
 
           // Each term has a grade module with exactly 1 assignment
-          const gradeModule = window.CST.courseModules[term.course_id][term.grade_module];
+          // The grade module is assumed to be the last module in the course
+          var courseModules = window.CST.courseModules[term.course_id];
+          const gradeModule = courseModules[courseModules.length -1];
+          // const gradeModule = window.CST.courseModules[term.course_id][term.grade_module];
           const gradeAssignmentId = gradeModule.items[0].content_id;
           const gradeSubmission = submissions.find(e => e.assignment_id === gradeAssignmentId);
           const term_grade = gradeSubmission.grade;
@@ -156,10 +166,7 @@ function getSubmissionsByStudent(termCode, sectionId, studentId, done) {
           const gradeModuleDivId = `sec_${sectionId}_stu_${studentId}_mod_${gradeModule.id}`;
           const gradeDiv = document.getElementById(gradeModuleDivId);
           gradeDiv.innerHTML = `<A HREF="${speed_grader_url}" TARGET="_BLANK">${grade_label}</A>`;
-        } // end else displaying submission status counts
         
-        // updateTimeStamp(sectionId, studentId);  // But really should wait for all calls to finish?
-
       } else {
         logErrorInPage('There was a problem with the request getSubmissionsByStudent.\nRequest status:' + httpRequest.status);
         // alert('There was a problem with the request getSubmissionsByStudent.\nRequest status:' + httpRequest.status);
@@ -168,7 +175,6 @@ function getSubmissionsByStudent(termCode, sectionId, studentId, done) {
     } // end request ready
   } // end request handler
 } // end function
-
 
 function getCeHours(termCode, studentId, done) {
 

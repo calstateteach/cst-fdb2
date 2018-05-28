@@ -74,15 +74,24 @@ html(lang='en')
                     TH(ROWSPAN="2" COLSPAN= colSpan)
                       DIV Observation Assignments                      
                   
-                  //- 2nd row for the survey columns
+                  //- 2nd row for the survey columns. Assumes 2 subheadings always.
+                  //- Can be a combination of assignments & quizzes.
+                  -var surveyModuleItems = courseModules[term.course_id][term.survey_module].items
+                  -var surveyModuleAssCount = surveyModuleItems.filter( e => e.type === "Assignment").length
                   TR
+                    //- If assignments in module, 1st subheading is submissions count
+                    if (surveyModuleAssCount > 0)
+                      TD= surveyModuleAssCount + ' submissions'
+
                     //- Iterate through quiz items in the survey module
-                    each item in courseModules[term.course_id][term.survey_module].items
-                      if item.type === "Quiz"
-                        TH
-                          //- -var quizUrl = `https://calstateteach.instructure.com/courses/${term.course_id}/quizzes/${item.content_id}`;
-                          -var quizUrl = `${CST_CANVAS_BASE_URL}courses/${term.course_id}/quizzes/${item.content_id}`;
-                          A(HREF= quizUrl TARGET="_BLANK")= item.title
+                    -var surveyModuleQuizItems = surveyModuleItems.filter( e => e.type === "Quiz")
+                    each item in surveyModuleQuizItems
+                      TH
+                        //- Don't use long title of quiz
+                        -var quizTitle = (item.id === 3555) ? "CalTPA C1 Complete?" : item.title
+                        //- -var quizUrl = `https://calstateteach.instructure.com/courses/${term.course_id}/quizzes/${item.content_id}`;
+                        -var quizUrl = `${CST_CANVAS_BASE_URL}courses/${term.course_id}/quizzes/${item.content_id}`;
+                        A(HREF= quizUrl TARGET="_BLANK")= quizTitle
 
               //- Table head of one row for terms without survey module
               else
@@ -114,12 +123,24 @@ html(lang='en')
                     - var ceHoursId = `term_${term.code}_stu_${student.id}`;
                     TD(ID=ceHoursId STYLE='text-align:center') ---<BR/>---
                     each module_index in term.module_indices
+
                       //- Display survey module quiz answers
+                      //- Can be a combination of assignments & quizzes.
                       if (module_index === term.survey_module)
-                        each item in courseModules[term.course_id][term.survey_module].items
-                          if item.type === "Quiz"
-                            - var quizTdId = `crs_${term.course_id}_quz_${item.content_id}_stu_${student.id}`;
-                            TD(ID= quizTdId) ----
+
+                        //- Make slot for submissions summary, if there are assignments in this module too
+                        -var surveyModuleItems = courseModules[term.course_id][term.survey_module].items
+                        -var surveyModuleAssCount = surveyModuleItems.filter( e => e.type === "Assignment").length
+                        if (surveyModuleAssCount > 0)
+                          - var moduleId = courseModules[term.course_id][module_index].id
+                          - var divId = `sec_${term.course_section_id}_stu_${student.id}_mod_${moduleId}`; 
+                          TD(ID=divId) ----
+
+                        //- Make slots for module quizzes
+                        -var surveyModuleQuizItems = surveyModuleItems.filter( e => e.type === "Quiz")
+                        each item in surveyModuleQuizItems
+                          - var quizTdId = `crs_${term.course_id}_quz_${item.content_id}_stu_${student.id}`;
+                          TD(ID= quizTdId) ----
                       
                       //- Display submission counts
                       //- To locate a table cell, it's ID contains section, student & module IDs
@@ -129,8 +150,10 @@ html(lang='en')
                         TD(ID=divId) ----
                     
                     //- Last position goes to term grade module
+                    //- The term grade module is assumed to be the last module in a course.
                     //- - var gradeModuleId = courseModules[term.course_id][term.term_grade].id
-                    - var gradeModuleId = courseModules[term.course_id][term.grade_module].id
+                    - var courseModulesList = courseModules[term.course_id]
+                    - var gradeModuleId = courseModulesList[courseModulesList.length - 1].id
                     - var gradeDivId = `sec_${term.course_section_id}_stu_${student.id}_mod_${gradeModuleId}`; 
                     TD
                       DIV(id=gradeDivId STYLE="text-align:center") ----
