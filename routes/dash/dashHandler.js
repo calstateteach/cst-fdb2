@@ -34,7 +34,7 @@ function get(req, res) {
   // Don't let user tamper with URL
   const userIdSession = parseInt(req.session.custom_canvas_user_id, 10);
   if (userIdSession != userId) {
-    res.redirect(req.app.locals.APP_URL + 'badRequest');
+    return res.redirect(req.app.locals.APP_URL + 'badRequest');
   }
 
   /**
