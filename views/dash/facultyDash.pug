@@ -81,7 +81,7 @@ html(lang='en')
                   TR
                     //- If assignments in module, 1st subheading is submissions count
                     if (surveyModuleAssCount > 0)
-                      TD= surveyModuleAssCount + ' submissions'
+                      TH(STYLE='font-weight:normal')= surveyModuleAssCount + ' submissions'
 
                     //- Iterate through quiz items in the survey module
                     -var surveyModuleQuizItems = surveyModuleItems.filter( e => e.type === "Quiz")

@@ -52,14 +52,3 @@ TD.student_col {
   background-color: #eff3f4;
 }
 
-/* -------------- Timestamp Column --------------------*/
-
-TH.timestamp_col {
-  width:82px;
-  height: 45px;   
-}
-
-TH.timestamp_col {
-  width:82px;
-  height: 36px; 
-}
