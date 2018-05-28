@@ -31,9 +31,9 @@ function get(req, res) {
   const isDevMode = req.session.userAuthMethod === 'dev';    // Indicate whether user is logged in as developer.
   const userRoles = req.session.fdb_roles;                    // Page needs to know the user's role
 
-  // Don't let user tamper with URL
+  // Don't let faculty user tamper with URL
   const userIdSession = parseInt(req.session.custom_canvas_user_id, 10);
-  if (userIdSession != userId) {
+  if ((req.session.userAuthMethod === 'lti') && (userIdSession != userId)) {
     return res.redirect(req.app.locals.APP_URL + 'badRequest');
   }
 
