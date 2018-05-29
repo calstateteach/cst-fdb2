@@ -1,0 +1,19 @@
+doctype html
+html(lang='en')
+ head
+   title CST Dashboard Developer Mode
+   link(rel="stylesheet", href=APP_URL + "LatoLatin/latolatinfonts.css")
+   link(rel="stylesheet", href=APP_URL + "style.css")
+body
+  p
+    A(HREF="./home") Home
+  H1 CST Dashboard: Developer Mode Setting
+
+  if isDevModeOn
+    P Developer mode is #[B on].
+    FORM(method="POST" action="devMode")
+      BUTTON(type='submit') Turn developer mode off (hide debug info)
+  else
+    P Developer mode is #[B off].
+    FORM(method="POST" action="devMode")
+      BUTTON(type='submit') Turn developer mode on (show debug info)

@@ -7,6 +7,7 @@
 02.27.2018 tps No longer need connection to CE hours Mongo DB.
 03.01.2018 tps Used temporary handler to test module detail page.
 05.28.2018 tps Remove obsolete clearCanvasDataHandler
+05.28.2018 tps Add route for dev mode setting.
 */
 
 const express = require('express');
@@ -57,5 +58,9 @@ router.post('/googleAssignmentConfig', googleAssDescHandler.post);
 
 // Temporary test page for testing refactoring of module detail page
 // router.get('/refactor/faculty/:userId/section/:sectionId/module/:moduleId/student/:studentId', getModuleDetail);
+
+const devModeHandler = require('./devModeHandler');
+router.get ('/devMode', devModeHandler.get);
+router.post('/devMode', devModeHandler.post);
 
 exports.router = router;
