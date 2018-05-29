@@ -124,7 +124,7 @@ function get(req, res) {
 
     // Canvas data we'll need to search
     const iSupeEnrollments  = canvasCache.getCourseEnrollments(iSupeCourseId);
-    const iSupeAssignments  = canvasCache.getCourseAssignments(iSupeCourseId);
+    // const iSupeAssignments  = canvasCache.getCourseAssignments(iSupeCourseId);
 
     for (let student of termCourse.students){
 

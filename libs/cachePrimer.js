@@ -49,7 +49,7 @@ function prefetchCanvasData(callback) {
     queryFunctions.push(queueUpQuery(getEnrollments, id));    
     // queryFunctions.push(queueUpQuery(getSections, id));
     queryFunctions.push(queueUpQuery(getModules, id));
-    // queryFunctions.push(queueUpQuery(getAssignments, id));     // 05.28.2018 Try retrieving by user instead.
+    queryFunctions.push(queueUpQuery(getAssignments, id));
 
   } // end loop through course terms
 
@@ -60,7 +60,7 @@ function prefetchCanvasData(callback) {
 
     queryFunctions.push(queueUpQuery(getEnrollments, id));
     // queryFunctions.push(queueUpQuery(getSections, id));
-    queryFunctions.push(queueUpQuery(getAssignments, id));
+    // queryFunctions.push(queueUpQuery(getAssignments, id));
 
   } // end loop through iSupervision courses
 
