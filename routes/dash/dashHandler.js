@@ -13,7 +13,8 @@ TODO:
 05.17.2018 tps Refactor without async calls, using already cached data.
 05.23.2018 tps Pass add permissions to the page template.
 05.26.2018 tps Pass session data to page for dev mode.
-05.28.2018 tps Preven user from tampering with URL to get to another faculty member's dashboard.
+05.28.2018 tps Prevent user from tampering with URL to get to another faculty member's dashboard.
+05.28.2018 tps Try retrieving iSupervision assignments by user to speed up refersh after adding an assignment.
 */
 
 // ******************** Module Imports ********************//
@@ -135,13 +136,19 @@ function get(req, res) {
       // We're interested in the section ID.
       // The student may not be enrolled in an iSupervision course
       const iSupeSectionId = studentEnrollments[0] ? studentEnrollments[0].course_section_id : null;
-
+      
       // Collect any assignment overrides for this section
       var assOverrides = [];
       if (iSupeSectionId) {
-        assOverrides = iSupeAssignments.filter(
-          e => e.has_overrides && e.overrides.find( override => override.course_section_id === iSupeSectionId)
-        );
+        assOverrides = canvasCache.getUserAssignments(student.id, iSupeCourseId);
+        
+        // This particular Canvas query includes more assignments than we really want,
+        // so try this to see only assignment overrides:
+        assOverrides = assOverrides.filter( e => e.only_visible_to_overrides);
+
+        // assOverrides = iSupeAssignments.filter(
+        //   e => e.has_overrides && e.overrides.find( override => override.course_section_id === iSupeSectionId)
+        // );
       }
 
       // Store the data we've collected

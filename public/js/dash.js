@@ -473,6 +473,7 @@ function showAddForm(courseId, addType, studentId) {
   document.getElementById('courseId').value = term.iSupe_course_id;   // Add to iSupervision course
   document.getElementById('sectionId').value = student.iSupe_course_section_id;  // Add to student's section
   document.getElementById('addType').value = addType;
+  document.getElementById('studentId').value = studentId;
 
   // Use more specific label in add form
   const addTypeTxt = (addType === 'CritiqueIt') ? 'iSupervision' : 'Google Observation';
@@ -492,8 +493,10 @@ function submitAdd() {
   const courseId = parseInt(document.getElementById('courseId').value, 10);
   const sectionId = parseInt(document.getElementById('sectionId').value, 10);
   const addType = document.getElementById('addType').value;
+  const userId = document.getElementById('studentId').value;
 
-  const postString = 'courseId=' + courseId
+  const postString = 'userId=' + userId
+    + '&courseId=' + courseId
     + '&sectionId=' + sectionId
     + '&assignmentName=' + encodeURIComponent(assignmentName)
     + '&addType=' + encodeURIComponent(addType);

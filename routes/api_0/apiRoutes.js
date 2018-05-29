@@ -1,8 +1,8 @@
 /* Express Router for version 0 of rest API.
 03.29.2018 tps Created to prototype AJAX call for student's submissions.
 04.24.2018 tps Refined endpoint parmaeters.
+05.28.2018 tps Try speeding up postAssignmentHandler by querying for assignments by user.
 TODO:
-- Secure API
 - Better error feedback
 */
 
@@ -94,15 +94,19 @@ function quizSubmissionsHandler(req, res) {
 /**
  * Add an assignment to Canvas. Returns JSON from CAM API call.
  * Handles either Google or CritiqueIt assignments.
+ * 
+ * 05.28.2018 tps Try using cache with assignments queried by use.
+ * We only need a userId to know cached data to query when done
  */
 function postAssignmentHandler(req, res) {
   // Gather POST parameters
+  const userId         = parseInt(req.body['userId'], 10);
   const courseId       = parseInt(req.body['courseId'], 10);
   const sectionId      = parseInt(req.body['sectionId'], 10);
   const assignmentName = req.body['assignmentName'];
   const addType        = req.body['addType'];
 
-  // console.log('postAssignmentHandler', courseId, sectionId, assignmentName, addType);
+  // console.log('postAssignmentHandler', userId, courseId, sectionId, assignmentName, addType);
 
   // Create Canvas POST query specific to assignment type we're adding.
 
@@ -143,10 +147,15 @@ function postAssignmentHandler(req, res) {
   return canvasApi.post(`courses/${courseId}/assignments`, params, (err, newAssignmentJson) => {
     if (err) return res.json({err: err});
     // If add went OK, make sure the new add shows up in the cached list of assignments
-    canvasCache.loadCourseAssignments(courseId, (err, assignmentsJson) => {
+    // 05.28.2018 tps We should be able to get away with just refreshing student's iSupervision assignments
+    canvasCache.loadUserAssignments(userId, courseId, (err, assignmentsJson) => {
       if (err) return res.json({err: err});
       return res.json(newAssignmentJson);
     });
+    // canvasCache.loadCourseAssignments(courseId, (err, assignmentsJson) => {
+    //   if (err) return res.json({err: err});
+    //   return res.json(newAssignmentJson);
+    // });
   });
 }
 

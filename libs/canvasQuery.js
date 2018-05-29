@@ -5,6 +5,7 @@
 05.17.2018 tps Add query for all course sections.
 05.21.2018 tps Add query for quiz submissions & events.
 05.23.2018 tps Implement adding Google or Critique assignments.
+05.28.2018 tps Add query for user assignmnts by course.
 */
 
 const canvasApi = require('./canvasApiTiny');
@@ -21,7 +22,7 @@ exports.getCourseFaculty = (courseId, callback) => {
     'type[]': FACULTY_TYPES
   };
   return canvasApi.get(endPoint, params, callback);
-}
+};
 
 
 exports.getCourses = (callback) => {
@@ -76,7 +77,7 @@ exports.getAssignments = (courseId, callback) => {
     'include[]': 'overrides'
   };
   return canvasApi.get(endpoint, params, callback);
-}
+};
 
 exports.getSectionSubmissions = (sectionId, callback) => {
   let endpoint = `sections/${sectionId}/students/submissions`;
@@ -86,7 +87,7 @@ exports.getSectionSubmissions = (sectionId, callback) => {
     'include[]': ['total_scores']
   };
   return canvasApi.get(endpoint, params, callback);
-}
+};
 
 exports.getCourseSubmissions = (courseId, callback) => {
   let endpoint = `courses/${courseId}/students/submissions`;
@@ -94,7 +95,7 @@ exports.getCourseSubmissions = (courseId, callback) => {
     'student_ids[]': 'all'
   };
   return canvasApi.get(endpoint, params, callback);
-}
+};
 
 exports.getStudentSubmissions = (sectionId, studentId, callback) => {
   let endpoint = `sections/${sectionId}/students/submissions`;
@@ -119,12 +120,21 @@ exports.getQuizSubmissionsForStudent = (courseId, quizId, studentId, callback) =
   // console.log(JSON.stringify(studentJson, null, 2));
   return callback(null, json);
   });  
-}
+};
 
 exports.getQuizSubmissionEvents = (courseId, quizId, submissionId, callback) => {
   const endpoint = `courses/${courseId}/quizzes/${quizId}/submissions/${submissionId}/events`;
   return canvasApi.get(endpoint, {}, callback);  
-}
+};
+
+
+exports.getUserAssignments = (userId, courseId, callback) => {
+  const endpoint = `users/${userId}/courses/${courseId}/assignments`;
+  params = {
+    'include[]': ['overrides'] // Not sure if this includes override info, though
+  }
+  return canvasApi.get(endpoint, params, callback);
+};
 
 //******************** Canvas POST APIs  ********************//
 

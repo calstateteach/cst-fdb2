@@ -1,5 +1,6 @@
 /* Module encapsulating pre-fetching Canvas data.
 * 05.15.2018 tps Start refactoring of canvasCache.js.
+  05.28.2018 tps Try pre-fetching assignments by user.
 */
 
 // const fs          = require('fs');
@@ -43,6 +44,10 @@ function getFaculty() {
   return moduleCache.get(queryKey).json;
 }
 
+function getUserAssignments(userId, courseId) {
+  const queryKey = `users_${userId}_courses_${courseId}_assignments`;
+  return moduleCache.get(queryKey).json;
+}
 
 //******************** Data-Specific Load Functions ********************//
 
@@ -82,6 +87,14 @@ function loadFaculty(callback) {
   const queryKey = `facultyUsers`;
   const queryFunction = function(callback) {
     return buildFacultyList(callback);
+  }
+  return moduleCache.loadQuery(queryKey, queryFunction, callback);
+}
+
+function loadUserAssignments(userId, courseId, callback) {
+  const queryKey = `users_${userId}_courses_${courseId}_assignments`;
+  const queryFunction = function(callback) {
+    return canvasQuery.getUserAssignments(userId, courseId, callback);
   }
   return moduleCache.loadQuery(queryKey, queryFunction, callback);
 }
@@ -132,9 +145,12 @@ exports.getCourseSections = getCourseSections;
 exports.getCourseModules = getCourseModules;
 exports.getCourseAssignments = getCourseAssignments;
 exports.getFaculty = getFaculty;
+exports.getUserAssignments = getUserAssignments;
 
 exports.loadCourseEnrollments = loadCourseEnrollments;
 exports.loadCourseSections = loadCourseSections;
 exports.loadCourseModules = loadCourseModules;
 exports.loadCourseAssignments = loadCourseAssignments;
 exports.loadFaculty = loadFaculty;
+exports.loadUserAssignments = loadUserAssignments;
+
