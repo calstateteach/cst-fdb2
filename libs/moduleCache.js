@@ -1,5 +1,8 @@
 /* Module encapsulating caching of Canvas data.
-* 05.16.2018 tps Split out data-specific code to canvasCacheWork.js.
+05.16.2018 tps Split out data-specific code to canvasCacheWork.js.
+06.06.2018 tps Even if there's no cached data, return a storage object
+  to the client so that client doesn't have to test for null values.
+  Would clients want to be able to tell that no data was cached, though?
 */
 
 const fs          = require('fs');
@@ -189,5 +192,5 @@ function getOldestTimestamp(callback) {
 exports.deleteDiskCache = deleteDiskCache;
 exports.loadDiskCache = loadDiskCache;
 exports.loadQuery = loadQuery;
-exports.get = function(queryKey) { return storage[queryKey]; }
+exports.get = function(queryKey) { return storage[queryKey] || { timestamp: new Date(), json: [], notInCache: true }; }
 exports.getOldestTimestamp = getOldestTimestamp;

@@ -84,6 +84,7 @@ app.use('/', require('./routes/root/rootRoutes').router);
 app.use('/dev', require('./routes/dev/devRoutes').router);
 app.use('/dash', require('./routes/dash/dashRoutes').router);
 app.use('/api/v0', require('./routes/api_0/apiRoutes').router);
+app.use('/api_public/v0', require('./routes/api_public_0/apiPublicRoutes').router);
 
 
 //******************** Pre-flight Activities ********************//

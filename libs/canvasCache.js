@@ -17,7 +17,8 @@ const FACULTY_TYPES = [ 'TaEnrollment', 'TeacherEnrollment'];
 // var storage = {}; // Module object store for prefetched query results.
 
 //******************** Data-Specific Get Functions ********************//
-// Return cached objects, or null if no data cached for the given request.
+// Return cached objects. Some sort of object is returned by the module
+// cache, even if the requested resource is not in the cache.
 
 function getCourseEnrollments(courseId) {
   const queryKey = `courses_${courseId}_enrollments`;
