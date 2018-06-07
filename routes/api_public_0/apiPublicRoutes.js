@@ -14,8 +14,8 @@ const canvasCache = require('../../libs/canvasCache');
 /* Handle restful query for an assignment's prev/next assignment.
 Returns JSON like:
 {
-  prevAssignmentId: 1408,
-  nextAssignmentId: 1410
+  prev: 1408,
+  next: 1410
 }
 
 If error, returns:
@@ -26,10 +26,7 @@ function assignmentNavigationHandler(req, res) {
   let assignmentId = parseInt(req.params['assignmentId'], 10);
 
   // Allow cross origin request
-  console.log('hostname:', req.hostname);
-  console.log('protocol', req.protocol);
-  
-  res.set('Access-Control-Allow-Origin', 'https://calstateteach.test.instructure.com');
+  res.set('Access-Control-Allow-Origin', '*');
   // res.set('Access-Control-Allow-Origin', 'https://calstateteach.test.instructure.com');
 
 
