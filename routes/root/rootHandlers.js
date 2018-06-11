@@ -19,6 +19,7 @@ function validateLogin(req, res) {
     && (process.env.CST_DEV_SECRET == secret)) {
       // Flag the method used to authorize the session user.
       req.session.userAuthMethod = 'dev';
+      req.session.fdb_roles = ['dev'];
 
       res.redirect('dev/home');
     } else {

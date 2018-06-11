@@ -1,7 +1,7 @@
 /* Express Router for version 0 of public rest API.
 This API provides unsecured access to Canvas assignment data for cross-domain AJAX clients.
 06.06.2018 tps Created.
-
+06.11.2018 tps Add endpoint for retrieving assignment description HTML.
 */
 
 const express     = require('express');
@@ -92,10 +92,37 @@ function assignmentNavigationHandler(req, res) {
 }
 
 
+/* Handle restful query for an assignment's description.
+Returns text string containing the assignment's description string out of Canvas
+or an error message.
+*/
+function assignmentDescriptionHandler(req, res) {
+  let courseId = parseInt(req.params['courseId'], 10);
+  let assignmentId = parseInt(req.params['assignmentId'], 10);
+
+  // Allow cross origin request so Canvas Web page to call this with AJAX.
+  res.set('Access-Control-Allow-Origin', '*');
+  // res.set('Access-Control-Allow-Origin', 'https://calstateteach.test.instructure.com');
+
+  // If no data found for the parameters, that's an error.
+  function noDataErr() {
+    const err = `No data found for course ${courseId}, assignment ${assignmentId}`;
+    return res.send(err);
+  }
+
+  const assignments = canvasCache.getCourseAssignments(courseId);
+  const assignment = assignments.find( e => e.id === assignmentId);
+  if (!assignment) return noDataErr();
+
+  return res.send(assignment.description);
+}
+
+
 /******************** Router Middleware *********************/
 
 
 /******************** Endpoint URLs *********************/
 router.get('/courses/:courseId/assignments/:assignmentId/nav', assignmentNavigationHandler);
+router.get('/courses/:courseId/assignments/:assignmentId/desc', assignmentDescriptionHandler);
 
 exports.router = router;

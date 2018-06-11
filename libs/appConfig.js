@@ -2,6 +2,7 @@
 Expose config file contents & timestamp for Web site admins.
 05.08.2018 tps Created.
 05.15.2018 tps Can we store the configuration data in this module instead of app locals?
+06.11.2018 tps Add configuration item for CST admins.
 */
 
 const async = require('async');
@@ -12,13 +13,15 @@ const csvUtils = require('./csvUtils');
 var termsConfig = {};
 var addsConfig = {};
 var assDesc = {};
+var cstAdminsConfig = {};
 
 
 //******************** Constants ********************//
 // File paths are relative to root folder.
-const TERMS_CONFIG_FILE = 'config/terms_config.json';
-const ADDS_CONFIG_FILE = 'config/add_config.csv'
-const GOOGLE_ASS_DESC_FILE = 'config/assignment_description.html';
+const TERMS_CONFIG_FILE       = 'config/terms_config.json';
+const ADDS_CONFIG_FILE        = 'config/add_config.csv'
+const GOOGLE_ASS_DESC_FILE    = 'config/assignment_description.html';
+const CST_ADMINS_CONFIG_FILE  = 'config/cst_admins.csv';
 
 //******************** Load all config items ********************//
 
@@ -34,7 +37,8 @@ function loadAll(callback) {
   async.series([
     (callback) => { loadTermsConfig(callback); },
     (callback) => { loadAddsConfig(callback); },
-    (callback) => { loadGoogleAssDesc(callback); }
+    (callback) => { loadGoogleAssDesc(callback); },
+    (callback) => { loadCstAdmins(callback); }
   ], done);
 }
 
@@ -74,6 +78,15 @@ function loadGoogleAssDesc(callback) {
   }); // end readFile callback
 }
 
+function loadCstAdmins(callback) {
+  // Read in CSV file containing list of CST admins.
+  csvUtils.parseFile(CST_ADMINS_CONFIG_FILE, (err, json) => {
+    if (err) return callback(err);
+    cstAdminsConfig = new ConfigItem(CST_ADMINS_CONFIG_FILE, json);
+    return callback();
+  });
+}
+
 //******************** Helper Functions ********************//
 
 //******************** ConfigItem Class ********************//
@@ -93,11 +106,14 @@ exports.loadAll = loadAll;
 exports.loadTerms = loadTermsConfig;
 exports.loadAdds = loadAddsConfig;
 exports.loadGoogleAssDesc = loadGoogleAssDesc;
+exports.loadCstAdmins = loadCstAdmins;
 
 exports.getTerms         = function () { return termsConfig.value; };
 exports.getAdds          = function () { return addsConfig.value; };
 exports.getGoogleAssDesc = function () { return assDesc.value; };
+exports.getCstAdmins     = function () { return cstAdminsConfig.value; };
 
 exports.getTermsConfigItem         = function () { return termsConfig; };
 exports.getAddsConfigItem          = function () { return addsConfig; };
 exports.getGoogleAssDescConfigItem = function () { return assDesc; };
+exports.getCstAdminsConfigItem     = function () { return cstAdminsConfig; };

@@ -8,11 +8,15 @@ html(lang='en')
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
   body
     block body
-      if isDevMode
+      if userRoles.includes('dev')
         p
-          A(HREF="./../../dev/home") Home
+          A(HREF=APP_URL + "dev/home") Home
           | &nbsp; | &nbsp;
-          A(HREF="./../../dev/facultyList") Faculty List
+          A(HREF=APP_URL + "dev/facultyList") Faculty List
+    
+      if userRoles.includes('CST-Admin')
+        P
+          A(HREF=APP_URL + "dev/facultyList") Faculty List
       
       //- Figure out which add buttons are enabled.
       //- If not configuration item found, go with default of just Google enabled.

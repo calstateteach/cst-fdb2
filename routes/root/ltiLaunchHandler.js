@@ -8,6 +8,7 @@
 05.18.2018 tps Add routing to show post parameters, for debugging.
 05.18.2018 tps Add routing logic for students.
 05.24.2018 tps Import LTI launch logic for students from old version.
+06.11.2018 tps Implement logic for CST Admin user.
 */
 
 // const async = require('async');
@@ -31,6 +32,7 @@ function launchLti(req, res) {
 
     // Flag the method used to authorize the session user.
     req.session.userAuthMethod = 'lti';
+    req.session.fdb_roles = [];
 
     // Save some stuff to a session for the client if we can validate the request.
     // if (isValidRequest('POST', process.env.CST_CRITIQUEIT_LTI_URL, req.body)) {
@@ -48,8 +50,16 @@ function launchLti(req, res) {
         return routeParamHandler(req, res, refererRoute);
       }
 
-      // 05.17.2018 tps Use CAM data to determine user's role.
       if (!emailLogin) return res.render('dev/err', { err: "No email login found in LTI post."});
+
+      // 06.11.2018 tps See if user is a CST-Admin
+      const cstAdminUser = appConfig.getCstAdmins.find( e => e.email === emailLogin);
+      if (cstAdminUser) {
+        req.session.fdb_roles.push('CST-Admin');
+        return res.redirect('dev/facultyList');
+      }
+
+      // 05.17.2018 tps Use CAM data to determine user's role.
       const camUrl = req.app.locals.CAM_USER_SEARCH_URL.replace('${userEmail}', emailLogin);
       camApi.collectApiResults([camUrl], (err, results) => {
 
@@ -73,7 +83,7 @@ function launchLti(req, res) {
         }
       });
     } else {
-      res.redirect('badRequest');
+      return res.redirect('badRequest');
     }
   });
 }

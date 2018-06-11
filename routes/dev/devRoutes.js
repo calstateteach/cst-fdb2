@@ -8,6 +8,7 @@
 03.01.2018 tps Used temporary handler to test module detail page.
 05.28.2018 tps Remove obsolete clearCanvasDataHandler
 05.28.2018 tps Add route for dev mode setting.
+06.11.2018 tps Add route for CST admins configuration.
 */
 
 const express = require('express');
@@ -62,5 +63,9 @@ router.post('/googleAssignmentConfig', googleAssDescHandler.post);
 const devModeHandler = require('./devModeHandler');
 router.get ('/devMode', devModeHandler.get);
 router.post('/devMode', devModeHandler.post);
+
+const cstAdminsHandler = require('./cstAdminsHandler');
+router.get ('/cstAdminsConfig', cstAdminsHandler.get);
+router.post('/cstAdminsConfig', cstAdminsHandler.post);
 
 exports.router = router;

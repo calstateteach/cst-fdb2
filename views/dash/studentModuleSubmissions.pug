@@ -7,11 +7,15 @@ html(lang='en')
     link(rel="stylesheet", href=APP_URL + "style_dash_scroll.css")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
   body
-    if isDevMode
+    if userRoles.includes('dev')
       p
         A(HREF= APP_URL + "dev/home") Home
         | &nbsp; | &nbsp;
         A(HREF= APP_URL + "dev/facultyList") Faculty List
+
+    if userRoles.includes('CST-Admin')
+      P
+        A(HREF=APP_URL + "dev/facultyList") Faculty List
 
     H1
       A(HREF= APP_URL + "dash/faculty/" + user.id)= 'Faculty Dashboard: ' + user.name

@@ -2,6 +2,7 @@
 05.23.2018 tps Start refactoring for AJAX calls 
 05.26.2018 tps Pass server session data to page, for dev mode.
 05.28.2018 tps Don't let user tamper with URL.
+06.11.2018 tps Allow CST-Admin users to view faculty dashboard.
 */
 
 const canvasCache = require('../../libs/canvasCache');
@@ -16,12 +17,15 @@ function get(req, res) {
   const sectionId = parseInt(req.params.sectionId, 10);
   const moduleId  = parseInt(req.params.moduleId, 10);
   const studentId = parseInt(req.params.studentId, 10);
-  const isDevMode = req.session.userAuthMethod === 'dev';    // Indicate whether user is logged in as developer.
+  // const isDevMode = req.session.userAuthMethod === 'dev';    // Indicate whether user is logged in as developer.
   const userRoles = req.session.fdb_roles;                    // Page needs to know the user's role
- 
+  const isCstAdmin = userRoles.includes('CST-Admin'); 
+
   // Don't let faculty user tamper with URL to see another faculty member's page.
   const userIdSession = parseInt(req.session.custom_canvas_user_id, 10);
-  if ((req.session.userAuthMethod === 'lti') && (userIdSession != userId)) {
+  if ((req.session.userAuthMethod === 'lti')
+    && (userIdSession != userId)
+    && (!isCstAdmin)) {
     return res.redirect(req.app.locals.APP_URL + 'badRequest');
   }
 
@@ -59,7 +63,7 @@ function get(req, res) {
   // in the hope that we can then re-use some client-side Javacript code.
 
   const params = {
-    isDevMode: isDevMode,
+    // isDevMode: isDevMode,
     userRoles: userRoles,
     user: facultyUser,
     userTerms: [termObject],

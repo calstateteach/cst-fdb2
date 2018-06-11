@@ -15,6 +15,7 @@ TODO:
 05.26.2018 tps Pass session data to page for dev mode.
 05.28.2018 tps Prevent user from tampering with URL to get to another faculty member's dashboard.
 05.28.2018 tps Try retrieving iSupervision assignments by user to speed up refersh after adding an assignment.
+06.11.2018 tps Allow CST-Admin users to view faculty dashboard.
 */
 
 // ******************** Module Imports ********************//
@@ -29,12 +30,15 @@ function get(req, res) {
 
   // Gather request parameters
   const userId = parseInt(req.params['userId'], 10);
-  const isDevMode = req.session.userAuthMethod === 'dev';    // Indicate whether user is logged in as developer.
+  // const isDevMode = req.session.userAuthMethod === 'dev';    // Indicate whether user is logged in as developer.
   const userRoles = req.session.fdb_roles;                    // Page needs to know the user's role
+  const userIdSession = parseInt(req.session.custom_canvas_user_id, 10);
+  const isCstAdmin = userRoles.includes('CST-Admin'); 
 
   // Don't let faculty user tamper with URL
-  const userIdSession = parseInt(req.session.custom_canvas_user_id, 10);
-  if ((req.session.userAuthMethod === 'lti') && (userIdSession != userId)) {
+  if ((req.session.userAuthMethod === 'lti') 
+    && (userIdSession != userId) 
+    && (!isCstAdmin)) {
     return res.redirect(req.app.locals.APP_URL + 'badRequest');
   }
 
@@ -189,7 +193,7 @@ function get(req, res) {
   
   // Prepare to deliver data to the page template.
   const params = {
-    isDevMode: isDevMode,
+    // isDevMode: isDevMode,
     userRoles: userRoles,
     user: user,
     userTerms: userTerms,
