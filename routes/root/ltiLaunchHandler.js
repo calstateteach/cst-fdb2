@@ -53,7 +53,7 @@ function launchLti(req, res) {
       if (!emailLogin) return res.render('dev/err', { err: "No email login found in LTI post."});
 
       // 06.11.2018 tps See if user is a CST-Admin
-      const cstAdminUser = appConfig.getCstAdmins.find( e => e.email === emailLogin);
+      const cstAdminUser = appConfig.getCstAdmins().find( e => e.email === emailLogin);
       if (cstAdminUser) {
         req.session.fdb_roles.push('CST-Admin');
         return res.redirect('dev/facultyList');
