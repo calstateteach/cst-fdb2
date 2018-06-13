@@ -9,6 +9,7 @@
 05.28.2018 tps Remove obsolete clearCanvasDataHandler
 05.28.2018 tps Add route for dev mode setting.
 06.11.2018 tps Add route for CST admins configuration.
+06.12.2018 tps Add route for CAM user search test page.
 */
 
 const express = require('express');
@@ -67,5 +68,7 @@ router.post('/devMode', devModeHandler.post);
 const cstAdminsHandler = require('./cstAdminsHandler');
 router.get ('/cstAdminsConfig', cstAdminsHandler.get);
 router.post('/cstAdminsConfig', cstAdminsHandler.post);
+
+router.get('/camUserSearch', require('./camUserSearchHandler'));
 
 exports.router = router;

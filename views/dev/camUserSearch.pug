@@ -1,0 +1,82 @@
+doctype html
+html(lang='en')
+ head
+   title CAM User Search
+   link(rel="stylesheet", href=APP_URL + "LatoLatin/latolatinfonts.css")
+   link(rel="stylesheet", href=APP_URL + "style.css")
+   STYLE.
+    PRE {
+      padding:10px;
+    }
+body
+  p
+    A(HREF="./home") Home
+  H1 CAM User Search
+  DIV
+    LABEL(FOR="email") Email:
+    INPUT(TYPE="text" ID="email" VALUE="aalvarado@calstateteach.net" STYLE="width:300px;margin:6px;")
+    BUTTON(ID="btnSubmit" ONCLICK="testLookup()") Lookup user
+  DIV
+    PRE(ID="destination")
+
+  //- Stash data for browser scripts
+  DIV(ID="appLocation" STYLE="display:none")=APP_URL
+  script.
+
+    function testLookup() {
+      const appLocation = document.getElementById('appLocation').innerText;
+      const email = document.getElementById('email').value;
+      const destSpan = document.getElementById('destination');
+      const btn =  document.getElementById('btnSubmit');
+
+      // Paramater validation
+      if (!email) {
+        destSpan.innerText = 'Enter an email and assignment name.';
+        return false;
+      }
+
+      const ajaxEndpoint = appLocation + 'api/v0/lookup/email/' + email;
+  
+      var httpRequest = new XMLHttpRequest();
+      if (!httpRequest) {
+        alert('Giving up :( Cannot create an XMLHTTP instance');
+        done();
+        return false;
+      }
+
+      btn.disabled = true;   // Don't let user do multiple lookups at once.
+      
+      httpRequest.onreadystatechange = lookupHandler;
+      httpRequest.open('GET', ajaxEndpoint, true);
+      httpRequest.send();
+
+      function lookupHandler() {
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+          if (httpRequest.status === 200) {
+            destSpan.innerText = JSON.stringify(JSON.parse(httpRequest.responseText), null, 2);
+          } else {
+            destSpan.innerText = 'AJAX error status:' + httpRequest.status;
+          }
+          btn.disabled = false; // Let user try another test
+        } // end request done
+      } // end request handler
+    } // end function
+
+
+    function initPage() {
+      // Implement [Enter] for submit form text fields.
+      const txtEmail = document.getElementById('email');
+      const btnSubmit =  document.getElementById('btnSubmit');
+
+      function onEnterSubmit(event) {
+        if (event.keyCode === 13) {
+          btnSubmit.focus();
+          btnSubmit.click();
+        }
+      }
+
+      txtEmail.addEventListener('keyup', onEnterSubmit);
+    }
+
+    // Wait for DOM to load before tinkering with form behavior
+    document.addEventListener("DOMContentLoaded", initPage);

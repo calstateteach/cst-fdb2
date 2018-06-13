@@ -2,6 +2,7 @@
 03.29.2018 tps Created to prototype AJAX call for student's submissions.
 04.24.2018 tps Refined endpoint parmaeters.
 05.28.2018 tps Try speeding up postAssignmentHandler by querying for assignments by user.
+06.12.2018 tps Add endoint for CAM user search.
 TODO:
 - Better error feedback
 */
@@ -90,6 +91,23 @@ function quizSubmissionsHandler(req, res) {
    return res.json(json);
   }); // End callback for submission query
 }
+
+
+/**
+ * Handle query CAM user lookup by email address.
+ * Returns JSON from CAM API call.
+ */
+function camUserSearchHandler(req, res) {
+  // Gather the parameters we need
+  const email = req.params['emailAddress'];
+  
+  const camUrl = req.app.locals.CAM_USER_SEARCH_URL.replace('${userEmail}', email);
+  camApi.collectApiResults([camUrl], (err, results) => {
+    if (err) return res.json({ err: err});
+    return res.json(results);
+  });
+}
+
 
 /**
  * Add an assignment to Canvas. Returns JSON from CAM API call.
@@ -181,6 +199,7 @@ router.get('/sections/:sectionId/students/:studentId/submissions', studentSubmis
 router.get('/cehours/:emailAddress', ceHoursHandler);
 router.get('/courses/:courseId/quizzes/:quizId/submissions/:submissionId/events', quizEventsHandler);
 router.get('/courses/:courseId/quizzes/:quizId/students/:studentId/submissions', quizSubmissionsHandler);
+router.get('/lookup/email/:emailAddress', camUserSearchHandler);
 
 router.post('/courses/:courseId/assignments', postAssignmentHandler);
 
