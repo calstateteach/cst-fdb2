@@ -160,11 +160,15 @@ function tryTestStudent(req, res, emailLogin) {
 /**
  * Simple-minded function to extract query parameters at the
  * end of a referer URL into properties of an object.
+ * 06.19.2018 tps Handle case of url not having a query string portion.
  **/
 function extractQueryParams(url) {
   var retObj = {};
   if (!url) return retObj; // I got nuthin'
-  var queryString = url.split('?')[1];
+  const urlSplit = url.split('?');
+  if (urlSplit.length < 2) return retObj;
+  // var queryString = url.split('?')[1];
+  var queryString = urlSplit[1];
   var queryPairs = queryString.split('&');
   for (pair of queryPairs) {
     var param = pair.split('=');
