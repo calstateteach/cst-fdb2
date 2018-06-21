@@ -12,3 +12,6 @@ npm-debug.log
 
 # 05.17.2018 tps We don't care about scratch test files
 tests/
+
+# 08.20.2018 tps We don't care about Visual Studio Code settings
+.vscode/

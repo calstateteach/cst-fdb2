@@ -6,6 +6,7 @@
 05.21.2018 tps Add query for quiz submissions & events.
 05.23.2018 tps Implement adding Google or Critique assignments.
 05.28.2018 tps Add query for user assignmnts by course.
+06.19.2018 tps Add query for course quizzes.
 */
 
 const canvasApi = require('./canvasApiTiny');
@@ -134,6 +135,12 @@ exports.getUserAssignments = (userId, courseId, callback) => {
     'include[]': ['overrides'] // Not sure if this includes override info, though
   }
   return canvasApi.get(endpoint, params, callback);
+};
+
+
+exports.getCourseQuizzes = (courseId, callback) => {
+  const endpoint = `courses/${courseId}/quizzes`;
+  return canvasApi.get(endpoint, {}, callback);
 };
 
 //******************** Canvas POST APIs  ********************//

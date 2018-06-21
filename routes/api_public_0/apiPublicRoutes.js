@@ -2,6 +2,8 @@
 This API provides unsecured access to Canvas assignment data for cross-domain AJAX clients.
 06.06.2018 tps Created.
 06.11.2018 tps Add endpoint for retrieving assignment description HTML.
+06.20.2018 tps Use adapted module items data for navigation,
+               to include quizzes that are assignments in the navigation.
 */
 
 const express     = require('express');
@@ -41,14 +43,17 @@ function assignmentNavigationHandler(req, res) {
   const courseConfig = terms.find( e => e.course_id === courseId);
   if (!courseConfig) return noDataErr();
 
-  const modules = canvasCache.getCourseModules(courseId);
+  // const modules = canvasCache.getCourseModules(courseId);
+  const modules = canvasCache.getAdaptedCourseModules(courseId);
   if (!modules) return noDataErr();
 
   var assignmentIds = [];   // Accumulate ordered list of assignments as used by the dashboard
 
   for (let moduleIndex of courseConfig.module_indices) {
-    const assignments = modules[moduleIndex].items.filter( e => e.type === 'Assignment');
-    assignmentIds = assignmentIds.concat(assignments.map( e => e.content_id));
+    // const assignments = modules[moduleIndex].items.filter( e => e.type === 'Assignment');
+    // assignmentIds = assignmentIds.concat(assignments.map( e => e.content_id));
+    const assignments = modules[moduleIndex].items.filter( e => e.type === 'Gradeable');
+    assignmentIds = assignmentIds.concat(assignments.map( e => e.assignment_id));
   }
 
   const assignmentIndex = assignmentIds.findIndex( e => e === assignmentId);

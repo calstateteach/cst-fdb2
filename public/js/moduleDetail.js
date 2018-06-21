@@ -1,5 +1,6 @@
 // Client-side script implementing module detail behavior
 // 05.23.2018 tps Created.
+// 06.20.2018 tps Use adapted module data to include quizzes that are assignments.
 
 // Wait for DOM to load before trying to read dashboard framework data
 document.addEventListener("DOMContentLoaded", initGlobals);
@@ -64,7 +65,8 @@ function getSubmissionsByStudent(courseId, sectionId, studentId, done) {
             courseItems.push(moduleItem);
           }
         };
-        const courseAssignments = courseItems.filter( e => e.type === 'Assignment');
+        // const courseAssignments = courseItems.filter( e => e.type === 'Assignment');
+        const courseAssignments = courseItems.filter( e => e.type === 'Gradeable');
 
         for (submission of submissions) {
 
@@ -82,7 +84,8 @@ function getSubmissionsByStudent(courseId, sectionId, studentId, done) {
           
             //- 05.11.2018 tps Special handling: If a Term 1 or Term 1B assignment is called "Activity 4.05",
             //- send user to special assignment URL instead of to the speed grader.
-            const submissionAssignment = courseAssignments.find( e => e.content_id === submission.assignment_id);
+            // const submissionAssignment = courseAssignments.find( e => e.content_id === submission.assignment_id);
+            const submissionAssignment = courseAssignments.find( e => e.assignment_id === submission.assignment_id);
             if ([ 197, 199 ].includes(courseId) && (submissionAssignment.title === "Activity 4.05")) {
               // link = `https://calstateteach.instructure.com/courses/206/assignments/3984`;
               link = `${window.CST.canvasBaseUrl}courses/206/assignments/3984`;

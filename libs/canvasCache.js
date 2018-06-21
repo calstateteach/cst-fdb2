@@ -1,6 +1,8 @@
 /* Module encapsulating pre-fetching Canvas data.
 * 05.15.2018 tps Start refactoring of canvasCache.js.
   05.28.2018 tps Try pre-fetching assignments by user.
+  06.19.2018 tps Cache course quizzes.
+  06.19.2018 tps Cache modules, adapted for dashboard layout.
 */
 
 // const fs          = require('fs');
@@ -47,6 +49,16 @@ function getFaculty() {
 
 function getUserAssignments(userId, courseId) {
   const queryKey = `users_${userId}_courses_${courseId}_assignments`;
+  return moduleCache.get(queryKey).json;
+}
+
+function getCourseQuizzes(courseId) {
+  const queryKey = `courses_${courseId}_quizzes`;
+  return moduleCache.get(queryKey).json;
+}
+
+function getAdaptedCourseModules(courseId) {
+  const queryKey = `courses_${courseId}_modules_adapted`;
   return moduleCache.get(queryKey).json;
 }
 
@@ -100,6 +112,21 @@ function loadUserAssignments(userId, courseId, callback) {
   return moduleCache.loadQuery(queryKey, queryFunction, callback);
 }
 
+function loadCourseQuizzes(courseId, callback) {
+  const queryKey = `courses_${courseId}_quizzes`;
+  const queryFunction = function(callback) {
+    return canvasQuery.getCourseQuizzes(courseId, callback);
+  }
+  return moduleCache.loadQuery(queryKey, queryFunction, callback);
+}
+
+function loadAdaptedCourseModules(courseId, callback) {
+  const queryKey = `courses_${courseId}_modules_adapted`;
+  const queryFunction = function(callback) {
+    return require('./adaptedModules')(courseId, callback);
+  }
+  return moduleCache.loadQuery(queryKey, queryFunction, callback);
+}
 
 //******************** Functions to get All Faculty Users ********************//
 
@@ -145,13 +172,16 @@ exports.getCourseEnrollments = getCourseEnrollments;
 exports.getCourseSections = getCourseSections;
 exports.getCourseModules = getCourseModules;
 exports.getCourseAssignments = getCourseAssignments;
+exports.getCourseQuizzes = getCourseQuizzes;
 exports.getFaculty = getFaculty;
 exports.getUserAssignments = getUserAssignments;
+exports.getAdaptedCourseModules = getAdaptedCourseModules;
 
 exports.loadCourseEnrollments = loadCourseEnrollments;
 exports.loadCourseSections = loadCourseSections;
 exports.loadCourseModules = loadCourseModules;
 exports.loadCourseAssignments = loadCourseAssignments;
+exports.loadCourseQuizzes = loadCourseQuizzes;
 exports.loadFaculty = loadFaculty;
 exports.loadUserAssignments = loadUserAssignments;
-
+exports.loadAdaptedCourseModules = loadAdaptedCourseModules;

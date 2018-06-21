@@ -43,7 +43,8 @@ html(lang='en')
           TABLE(ClASS="dash_table"  ID="term_" + term.code)
             //- Table head for assignments
             -var courseModule = courseModules[term.course_id].find( e => e.id === moduleId)
-            -var moduleAssignments = courseModule.items.filter( e => e.type === "Assignment")
+            //- -var moduleAssignments = courseModule.items.filter( e => e.type === "Assignment")
+            -var moduleAssignments = courseModule.items.filter( e => e.type === "Gradeable")
             THEAD
               TR
                 each assignment in moduleAssignments
@@ -54,7 +55,8 @@ html(lang='en')
               each student in term.students
                 TR
                   each assignment in moduleAssignments
-                    TD(ID= `sec_${term.course_section_id}_ass_${assignment.content_id}_stu_${student.id}`) ----
+                    //- TD(ID= `sec_${term.course_section_id}_ass_${assignment.content_id}_stu_${student.id}`) ----
+                    TD(ID= `sec_${term.course_section_id}_ass_${assignment.assignment_id}_stu_${student.id}`) ----
     H3
       A(HREF= APP_URL + "dash/faculty/" + user.id) Back to overview
 

@@ -3,6 +3,7 @@
 // 04.25.2018 tps Added crude callback system for indicating when data done loading.
 // 05.21.2018 tps Revise for reorganization of Canvas courses for Summer 2018 term.
 // 05.28.2018 tps Revise for survey module 11's layout.
+// 06.20.2018 tps Use adapted module data to include quizzes that are assignments.
 
 // Wait for DOM to load before trying to read dashboard framework data
 document.addEventListener("DOMContentLoaded", initGlobals);
@@ -51,9 +52,11 @@ function loadSubmissions() {
       targetAjaxCount += 3;
       
       // If the term has a survey module, 2 more calls are needed
-      if (term.survey_module) {
-        targetAjaxCount += 2;
-      }
+      const surveyModuleCount = window.CST.courseModules[term.course_id].filter( e => e.has_survey).length;
+      targetAjaxCount += surveyModuleCount * 2;
+      // if (term.survey_module) {
+      //   targetAjaxCount += 2;
+      // }
 
     } // Loop through students
   } // Loop through terms
@@ -122,13 +125,15 @@ function getSubmissionsByStudent(termCode, sectionId, studentId, done) {
           let gradedItems = 0;
           
           // Accumulate summary counts for submissions to the module.
-          var moduleAssignmentItems = module.items.filter( e => e.type === 'Assignment');
+          // var moduleAssignmentItems = module.items.filter( e => e.type === 'Assignment');
+          var moduleAssignmentItems = module.items.filter( e => e.type === 'Gradeable');
 
           // Skip modules with no assignments.
           if (moduleAssignmentItems.length < 1) continue;
           
           for (let item of moduleAssignmentItems) {
-            const submission = submissions.find(e => e.assignment_id === item.content_id);
+            // const submission = submissions.find(e => e.assignment_id === item.content_id);
+            const submission = submissions.find(e => e.assignment_id === item.assignment_id);
             if (submission) {
               const workflowState = submission.workflow_state;
               if (workflowState === 'unsubmitted') ++unsubmittedItems;
@@ -154,7 +159,8 @@ function getSubmissionsByStudent(termCode, sectionId, studentId, done) {
           var courseModules = window.CST.courseModules[term.course_id];
           const gradeModule = courseModules[courseModules.length -1];
           // const gradeModule = window.CST.courseModules[term.course_id][term.grade_module];
-          const gradeAssignmentId = gradeModule.items[0].content_id;
+          // const gradeAssignmentId = gradeModule.items[0].content_id;
+          const gradeAssignmentId = gradeModule.items[0].assignment_id;
           const gradeSubmission = submissions.find(e => e.assignment_id === gradeAssignmentId);
           const term_grade = gradeSubmission.grade;
           const term_score = gradeSubmission.score;
@@ -280,17 +286,27 @@ function getISupeSubmissionsByStudent(sectionId, studentId, done) {
  * Populate DOM with student's survey question answers, using AJAX.
  */
 function getSurveySubmmissionsByStudent(termCode, studentId, done) {
-  // Does the term in question even have any surveys?
   const term = window.CST.terms.find( e => e.code === termCode);
-  if (term && term.survey_module) {
-    const moduleItems = window.CST.courseModules[term.course_id][term.survey_module].items;
-    const surveys = moduleItems.filter(e => e.type === 'Quiz');
-    for (survey of surveys) {
-      // console.log('found quiz', survey.content_id, 'in course', term.course_id, 'for student', studentId);
-      // getQuizAnswer(term.course_id, survey.content_id, studentId, done);
-      getQuizSubmissions(term.course_id, survey.content_id, studentId, done);
+  const termModules = window.CST.courseModules[term.course_id];
+  const surveyModules = termModules.filter( e => e.has_survey);
+  for (surveyModule of surveyModules) {
+    const surveyItems = surveyModule.items.filter( e => e.type === 'Survey');
+    for (surveyItem of surveyItems) {
+      getQuizSubmissions(term.course_id, surveyItem.quiz_id, studentId, done);
     }
   }
+
+  // if (term && term.survey_module) {
+  //   const moduleItems = window.CST.courseModules[term.course_id][term.survey_module].items;
+  //   // const surveys = moduleItems.filter(e => e.type === 'Quiz');
+  //   const surveys = moduleItems.filter(e => e.type === 'Survey');
+  //   for (survey of surveys) {
+  //     // console.log('found quiz', survey.content_id, 'in course', term.course_id, 'for student', studentId);
+  //     // getQuizAnswer(term.course_id, survey.content_id, studentId, done);
+  //     // getQuizSubmissions(term.course_id, survey.content_id, studentId, done);
+  //     getQuizSubmissions(term.course_id, survey.quiz_id, studentId, done);
+  //   }
+  // }
 }
 
 /**

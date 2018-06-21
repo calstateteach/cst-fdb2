@@ -3,6 +3,7 @@
 05.26.2018 tps Pass server session data to page, for dev mode.
 05.28.2018 tps Don't let user tamper with URL.
 06.11.2018 tps Allow CST-Admin users to view faculty dashboard.
+06.20.2018 tps Use adapted version of course modules to handle quiz assignments.
 */
 
 const canvasCache = require('../../libs/canvasCache');
@@ -54,7 +55,8 @@ function get(req, res) {
   termObject.students = [studentEnrollment.user];
  
   // Create object containing course modules, indexed by module IDs
-  const courseModules = canvasCache.getCourseModules(courseId);
+  // const courseModules = canvasCache.getCourseModules(courseId);
+  const courseModules = canvasCache.getAdaptedCourseModules(courseId);
   const courseModulesObj = {};
   courseModulesObj[courseId] = courseModules;
 

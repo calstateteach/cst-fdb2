@@ -16,6 +16,7 @@ TODO:
 05.28.2018 tps Prevent user from tampering with URL to get to another faculty member's dashboard.
 05.28.2018 tps Try retrieving iSupervision assignments by user to speed up refersh after adding an assignment.
 06.11.2018 tps Allow CST-Admin users to view faculty dashboard.
+06.20.2018 tps Use adapted version of course modules to handle quiz assignments.
 */
 
 // ******************** Module Imports ********************//
@@ -178,16 +179,19 @@ function get(req, res) {
    * Populate a course modules collection containing module, assignment & quiz
    * data for each course the faculty teaches.
    * The collection is indexed by the canvas course ID.
+   * 06.20.2018 tps Use adapted version of module collection so we can properly
+   *                handle quizzes that are assignments.
    */
   var courseModules = { }; // Initialize collection to hold modules, indexed by course ID.
   for (let courseId of userTerms.map(e => e.course_id)) {
     // We're going to manipulate the modules collection, so use a copy   
-    const modules = JSON.parse(JSON.stringify(canvasCache.getCourseModules(courseId)));
+    // const modules = JSON.parse(JSON.stringify(canvasCache.getCourseModules(courseId)));
+    const modules = JSON.parse(JSON.stringify(canvasCache.getAdaptedCourseModules(courseId)));
 
-    // Include only "Assignment" & "Quiz" items.
-    for (module of modules) {
-      module.items = module.items.filter( e => ['Assignment', 'Quiz'].includes(e.type));
-    }
+    // // Include only "Assignment" & "Quiz" items.
+    // for (module of modules) {
+    //   module.items = module.items.filter( e => ['Assignment', 'Quiz'].includes(e.type));
+    // }
     courseModules[courseId] = modules;
   }
   

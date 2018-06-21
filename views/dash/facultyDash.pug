@@ -49,7 +49,9 @@ html(lang='en')
           DIV(CLASS="scrolling_right")
             TABLE(ClASS="dash_table"  ID="term_" + term.code)
               //- Table head requires 2 rows to accommodate survey module
-              if term.survey_module
+              -var hasSurveyModule = courseModules[term.course_id].find( e => e.has_survey)
+              //- if term.survey_module
+              if hasSurveyModule
                 THEAD(CLASS="dash_head_half_height")
                   TR
                     TH(ROWSPAN="2")
@@ -57,15 +59,17 @@ html(lang='en')
                       DIV Hours
                     each module_index in term.module_indices
                       //- Draw survey module columns
-                      if (module_index === term.survey_module)
+                      //- if (module_index === term.survey_module)
+                      - var includedModule = courseModules[term.course_id][module_index]
+                      if includedModule.has_survey
                         TH(COLSPAN="2")
-                          DIV= courseModules[term.course_id][module_index].name.split(':')[0]
+                          DIV= includedModule.name.split(':')[0]
                       else
                         TH(ROWSPAN="2")
-                          DIV= courseModules[term.course_id][module_index].name.split(':')[0]
+                          DIV= includedModule.name.split(':')[0]
 
                           //- Display module's submission count
-                          - var submissionCount = courseModules[term.course_id][module_index].items.length
+                          - var submissionCount = includedModule.items.length
                           DIV(STYLE="font-weight:normal")= submissionCount + " submissions"
 
                     TH(ROWSPAN="2")
@@ -80,22 +84,28 @@ html(lang='en')
                   
                   //- 2nd row for the survey columns. Assumes 2 subheadings always.
                   //- Can be a combination of assignments & quizzes.
-                  -var surveyModuleItems = courseModules[term.course_id][term.survey_module].items
-                  -var surveyModuleAssCount = surveyModuleItems.filter( e => e.type === "Assignment").length
+                  //- -var surveyModuleItems = courseModules[term.course_id][term.survey_module].items
+                  //- -var surveyModuleAssCount = surveyModuleItems.filter( e => e.type === "Assignment").length
+                  //- -var surveyModuleAssCount = surveyModuleItems.filter( e => e.type === "Gradeable").length
                   TR
-                    //- If assignments in module, 1st subheading is submissions count
-                    if (surveyModuleAssCount > 0)
-                      TH(STYLE='font-weight:normal')= surveyModuleAssCount + ' submissions'
+                    - var surveyModules = courseModules[term.course_id].filter( e => e.has_survey)
+                    each surveyModule in surveyModules
+                      //- If assignments in module, 1st subheading is submissions count
+                      - var surveyModuleAssCount = surveyModule.items.filter( e => e.type === "Gradeable").length
+                      if (surveyModuleAssCount > 0)
+                        TH(STYLE='font-weight:normal')= surveyModuleAssCount + ' submissions'
 
-                    //- Iterate through quiz items in the survey module
-                    -var surveyModuleQuizItems = surveyModuleItems.filter( e => e.type === "Quiz")
-                    each item in surveyModuleQuizItems
-                      TH
-                        //- Don't use long title of quiz
-                        -var quizTitle = (item.id === 3555) ? "CalTPA C1 Complete?" : item.title
-                        //- -var quizUrl = `https://calstateteach.instructure.com/courses/${term.course_id}/quizzes/${item.content_id}`;
-                        -var quizUrl = `${CST_CANVAS_BASE_URL}courses/${term.course_id}/quizzes/${item.content_id}`;
-                        A(HREF= quizUrl TARGET="_BLANK")= quizTitle
+                      //- Iterate through quiz items in the survey module
+                      //- -var surveyModuleQuizItems = surveyModuleItems.filter( e => e.type === "Quiz")
+                      -var surveyModuleQuizItems = surveyModule.items.filter( e => e.type === "Survey")
+                      each item in surveyModuleQuizItems
+                        TH
+                          //- Don't use long title of quiz
+                          -var quizTitle = (item.id === 3555) ? "CalTPA C1 Complete?" : item.title
+                          //- -var quizUrl = `https://calstateteach.instructure.com/courses/${term.course_id}/quizzes/${item.content_id}`;
+                          //- -var quizUrl = `${CST_CANVAS_BASE_URL}courses/${term.course_id}/quizzes/${item.content_id}`;
+                          -var quizUrl = `${CST_CANVAS_BASE_URL}courses/${term.course_id}/quizzes/${item.quiz_id}`;
+                          A(HREF= quizUrl TARGET="_BLANK")= quizTitle
 
               //- Table head of one row for terms without survey module
               else
@@ -130,26 +140,32 @@ html(lang='en')
 
                       //- Display survey module quiz answers
                       //- Can be a combination of assignments & quizzes.
-                      if (module_index === term.survey_module)
+                      //- if (module_index === term.survey_module)
+                      -var courseModule = courseModules[term.course_id][module_index] 
+                      if courseModule.has_survey
 
                         //- Make slot for submissions summary, if there are assignments in this module too
-                        -var surveyModuleItems = courseModules[term.course_id][term.survey_module].items
-                        -var surveyModuleAssCount = surveyModuleItems.filter( e => e.type === "Assignment").length
+                        -var surveyModuleItems = courseModule.items
+                        //- -var surveyModuleItems = courseModules[term.course_id][term.survey_module].items
+                        //- -var surveyModuleAssCount = surveyModuleItems.filter( e => e.type === "Assignment").length
+                        -var surveyModuleAssCount = surveyModuleItems.filter( e => e.type === "Gradeable").length
                         if (surveyModuleAssCount > 0)
-                          - var moduleId = courseModules[term.course_id][module_index].id
+                          - var moduleId = courseModule.id
                           - var divId = `sec_${term.course_section_id}_stu_${student.id}_mod_${moduleId}`; 
                           TD(ID=divId) ----
 
                         //- Make slots for module quizzes
-                        -var surveyModuleQuizItems = surveyModuleItems.filter( e => e.type === "Quiz")
+                        //- -var surveyModuleQuizItems = surveyModuleItems.filter( e => e.type === "Quiz")
+                        -var surveyModuleQuizItems = surveyModuleItems.filter( e => e.type === "Survey")
                         each item in surveyModuleQuizItems
-                          - var quizTdId = `crs_${term.course_id}_quz_${item.content_id}_stu_${student.id}`;
+                          //- - var quizTdId = `crs_${term.course_id}_quz_${item.content_id}_stu_${student.id}`;
+                          - var quizTdId = `crs_${term.course_id}_quz_${item.quiz_id}_stu_${student.id}`;
                           TD(ID= quizTdId) ----
                       
                       //- Display submission counts
                       //- To locate a table cell, it's ID contains section, student & module IDs
                       else
-                        - var moduleId = courseModules[term.course_id][module_index].id
+                        - var moduleId = courseModule.id
                         - var divId = `sec_${term.course_section_id}_stu_${student.id}_mod_${moduleId}`; 
                         TD(ID=divId) ----
                     

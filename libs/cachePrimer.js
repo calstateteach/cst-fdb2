@@ -2,6 +2,7 @@
 05.15.2018 tps Start refactoring of canvasCachePrimer.js.
 05.17.2018 tps I don't think we need sections data.
 05.28.2018 tps Try pre-fetching isupervision assignments by user.
+06.19.2018 tps Pre-fetch course quizzes.
 */
 
 // const fs          = require('fs');
@@ -11,11 +12,13 @@ const canvasCache = require('./canvasCache');
 const moduleCache = require('./moduleCache');
 const statusFile  = require('./cacheStatus');
 
-// Pointers to functions that populate the cache
+// Pointers to functions that populate the cache.
+// Function signature are expected to be (courseId, callback)
 const getEnrollments  = canvasCache.loadCourseEnrollments;
 // const getSections     = canvasCache.loadCourseSections;
 const getModules      = canvasCache.loadCourseModules;
 const getAssignments  = canvasCache.loadCourseAssignments;
+const getQuizzes      = canvasCache.loadCourseQuizzes;
 
 const DELAY = 1000; // Delay in milliseconds between API calls, Canvas doesn't throttle us.
 
@@ -50,6 +53,7 @@ function prefetchCanvasData(callback) {
     // queryFunctions.push(queueUpQuery(getSections, id));
     queryFunctions.push(queueUpQuery(getModules, id));
     queryFunctions.push(queueUpQuery(getAssignments, id));
+    queryFunctions.push(queueUpQuery(getQuizzes, id));
 
   } // end loop through course terms
 
@@ -110,6 +114,35 @@ function prefetchISupeAssignmentsByUser(callback) {
   async.parallel(queryFunctions, done);
 }
 
+/**
+ * Build version of module collections for each course that is
+ * convenient for the dashboard layout & assignment navigation.
+ */
+
+function buildAdaptedCourseModules(callback) {
+  // callback signature: (err)
+
+  // Accumulate list of functions that build the JSON for each course.
+  const terms = appConfig.getTerms();
+  const courseIds = new Set(terms.map( e => e.course_id));
+  var queryFunctions = [];
+  for (let courseId of courseIds) {
+    queryFunctions.push(
+      function(cb) {
+        return canvasCache.loadAdaptedCourseModules(courseId, cb);
+      }
+    );
+  }
+
+  // function done(err, results) {
+  //   if (err) return callback(err);
+  //   return callback(null);
+  // }
+
+  console.log("Priming cache with", queryFunctions.length, "adapted course modules.");
+  async.parallel(queryFunctions, (err, results) => { return callback(err); });
+}
+
 
 function prefetch(callback) {
   // callback signature: (err);
@@ -125,6 +158,7 @@ function prefetch(callback) {
     prefetchCanvasData,
     canvasCache.loadFaculty,
     prefetchISupeAssignmentsByUser,
+    buildAdaptedCourseModules,
     stopTiming
   ], done);
 
@@ -137,3 +171,4 @@ function prefetch(callback) {
 
 //******************** Exported Functions ********************//
 exports.prefetch = prefetch;
+exports.buildAdaptedCourseModules = buildAdaptedCourseModules;
