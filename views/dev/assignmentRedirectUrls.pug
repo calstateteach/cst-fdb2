@@ -1,0 +1,23 @@
+doctype html
+html(lang='en')
+  head
+    title Assignment URLs
+    link(rel="stylesheet", href=APP_URL + "LatoLatin/latolatinfonts.css")
+    link(rel="stylesheet", href=APP_URL + "style.css")
+  body
+    p
+      A(HREF="./home") Home
+    H1 Assignment URLs
+    TABLE.data
+      TR
+        TH Index
+        TH Assignment Name
+        for term in terms
+          TH= term.name
+      for assignment, index in courseAssignments
+        TR
+          TD= index
+          TD(STYLE="white-space:nowrap")= assignment.name
+          for term in terms
+            TD= assignment.url[term.course_id]
+      

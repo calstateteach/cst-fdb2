@@ -10,6 +10,7 @@
 05.28.2018 tps Add route for dev mode setting.
 06.11.2018 tps Add route for CST admins configuration.
 06.12.2018 tps Add route for CAM user search test page.
+06.29.2018 tps Add route for assignment URL test page.
 */
 
 const express = require('express');
@@ -70,5 +71,8 @@ router.get ('/cstAdminsConfig', cstAdminsHandler.get);
 router.post('/cstAdminsConfig', cstAdminsHandler.post);
 
 router.get('/camUserSearch', require('./camUserSearchHandler'));
+
+const assUrlHandler = require('./assignmentRedirectUrlsHandler');
+router.get('/assignmentUrls', assUrlHandler.get);
 
 exports.router = router;
